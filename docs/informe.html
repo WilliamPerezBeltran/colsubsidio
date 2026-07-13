@@ -72,7 +72,6 @@
     background-attachment: fixed;
     background-position: -1px -1px;
   }
-  @media (prefers-color-scheme: dark) { body { opacity: 1; } }
   body::before {
     content: "";
     position: fixed; inset: 0;
@@ -84,7 +83,6 @@
   h1, h2, h3 { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif; text-wrap: balance; margin: 0; }
   .mono { font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", Consolas, "Liberation Mono", monospace; }
   .num { font-variant-numeric: tabular-nums; }
-
   a { color: var(--line); }
 
   .wrap { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem 6rem; }
@@ -92,7 +90,7 @@
   /* ---------- Masthead ---------- */
   .masthead {
     display: flex; flex-direction: column; gap: 0.6rem;
-    padding-bottom: 1.75rem; margin-bottom: 1.75rem;
+    padding-bottom: 1.75rem; margin-bottom: 1.5rem;
     border-bottom: 2px solid var(--line);
   }
   .masthead .eyebrow {
@@ -108,8 +106,8 @@
   }
   .masthead .meta-row b { color: var(--ink); font-weight: 600; }
 
-  /* ---------- Stepper ---------- */
-  .stepper { position: sticky; top: 0; z-index: 20; background: var(--bg); padding: 0.9rem 0 1.1rem; margin-bottom: 0.25rem; }
+  /* ---------- Main stepper ---------- */
+  .stepper { position: sticky; top: 0; z-index: 20; background: var(--bg); padding-top: 0.9rem; margin-bottom: 0.4rem; }
   .stepper-track {
     display: flex; align-items: center; gap: 0; margin: 0 auto; max-width: 960px; padding: 0 1.5rem;
   }
@@ -133,9 +131,21 @@
   .step-connector { flex: 1 1 auto; height: 2px; background: var(--border); margin: 0 0.25rem; position: relative; top: -0.9rem; }
   .step-connector.filled { background: var(--line); }
 
+  /* ---------- Sub-stepper ---------- */
+  .substepper { max-width: 960px; margin: 0 auto 0.3rem; padding: 0.5rem 1.5rem 0.7rem; display: flex; gap: 0.4rem; flex-wrap: wrap; border-bottom: 1px dashed var(--border); }
+  .subchip {
+    font-family: ui-monospace, monospace; font-size: 0.72rem; padding: 0.34rem 0.7rem; border-radius: 3px;
+    border: 1px solid var(--border); background: var(--surface); color: var(--muted); cursor: pointer;
+    transition: all .15s ease; white-space: nowrap;
+  }
+  .subchip .n { opacity: 0.7; margin-right: 0.35rem; }
+  .subchip.active { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, var(--surface)); font-weight: 700; }
+  .subchip.done:not(.active) { color: var(--line); border-color: var(--line); }
+  .subchip:focus-visible { outline: 2px solid var(--line); outline-offset: 2px; }
+
   /* ---------- Panels ---------- */
   .panel { display: none; }
-  .panel.active { display: block; animation: rise .38s ease both; }
+  .panel.active { display: block; animation: rise .35s ease both; }
   @media (prefers-reduced-motion: reduce) { .panel.active { animation: none; } }
   @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -144,10 +154,10 @@
     background: var(--surface); border: 1px solid var(--border); border-radius: 3px;
     box-shadow: var(--shadow);
     padding: 2rem 2rem 2.25rem;
-    margin-top: 1.25rem;
+    margin-top: 1.1rem;
+    min-height: 220px;
   }
-  .sheet::before, .sheet::after,
-  .sheet .crop-br::before, .sheet .crop-br::after { content: ""; position: absolute; width: 14px; height: 14px; border: 2px solid var(--line); opacity: 0.55; }
+  .sheet::before, .sheet::after { content: ""; position: absolute; width: 14px; height: 14px; border: 2px solid var(--line); opacity: 0.55; }
   .sheet::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
   .sheet::after { top: -1px; right: -1px; border-left: none; border-bottom: none; }
 
@@ -155,14 +165,14 @@
     font-family: ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--line); font-weight: 700; margin-bottom: 0.5rem;
   }
-  .sheet h2 { font-size: 1.55rem; font-weight: 600; margin-bottom: 0.35rem; }
-  .sheet .dek { color: var(--muted); font-size: 0.98rem; max-width: 68ch; line-height: 1.55; margin: 0.3rem 0 1.6rem; }
+  .sheet h2 { font-size: 1.45rem; font-weight: 600; margin-bottom: 0.35rem; }
+  .sheet .dek { color: var(--muted); font-size: 0.96rem; max-width: 68ch; line-height: 1.55; margin: 0.3rem 0 1.5rem; }
 
   h3.block-title {
     font-family: -apple-system, "Segoe UI", sans-serif; font-size: 0.78rem; letter-spacing: 0.07em; text-transform: uppercase;
-    font-weight: 700; color: var(--muted); margin: 2rem 0 0.75rem; padding-top: 1.4rem; border-top: 1px solid var(--border);
+    font-weight: 700; color: var(--muted); margin: 1.8rem 0 0.75rem; padding-top: 1.3rem; border-top: 1px solid var(--border);
   }
-  .sheet > h3.block-title:first-of-type { border-top: none; padding-top: 0; margin-top: 0.5rem; }
+  .sheet > h3.block-title:first-of-type { border-top: none; padding-top: 0; margin-top: 0.4rem; }
 
   p { line-height: 1.62; margin: 0 0 0.9rem; color: var(--ink); }
   p.small { font-size: 0.9rem; color: var(--muted); }
@@ -184,7 +194,7 @@
   td.num, th.num { font-family: ui-monospace, monospace; font-variant-numeric: tabular-nums; text-align: right; }
   td.hl { font-weight: 700; color: var(--accent); }
 
-  /* ---------- Data cover cards (step 0) ---------- */
+  /* ---------- kv cards ---------- */
   .kv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.7rem; margin: 0.9rem 0 1.6rem; }
   .kv-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 3px; padding: 0.75rem 0.9rem; }
   .kv-card .k { font-family: ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
@@ -203,7 +213,6 @@
 
   /* ---------- Funnel ---------- */
   .funnel { display: flex; flex-direction: column; gap: 1.6rem; margin: 1rem 0 1.6rem; }
-  .funnel-chan { }
   .funnel-chan .chan-label { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
   .funnel-chan .chan-label .sw { width: 0.65rem; height: 0.65rem; border-radius: 2px; }
   .funnel-chan .chan-label b { font-size: 0.95rem; }
@@ -261,7 +270,7 @@
   .impact-bar-row .fill.proj { background: var(--good); }
   .impact-bar-row .v { font-family: ui-monospace, monospace; font-size: 0.78rem; text-align: right; }
 
-  /* ---------- Nav buttons ---------- */
+  /* ---------- Nav ---------- */
   .nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: 1.6rem; gap: 1rem; }
   button.navbtn {
     font-family: ui-monospace, monospace; font-size: 0.82rem; letter-spacing: 0.02em;
@@ -273,7 +282,8 @@
   button.navbtn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
   button.navbtn.primary:hover { filter: brightness(1.08); }
   button.navbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .nav-count { font-family: ui-monospace, monospace; font-size: 0.78rem; color: var(--muted); }
+  .nav-count { font-family: ui-monospace, monospace; font-size: 0.76rem; color: var(--muted); text-align: center; }
+  .nav-count .maintag { color: var(--ink); font-weight: 700; }
 
   footer.colophon { text-align: center; margin-top: 3rem; font-size: 0.76rem; color: var(--muted); font-family: ui-monospace, monospace; }
 </style>
@@ -294,19 +304,30 @@
 
   <nav class="stepper" aria-label="Pasos del análisis">
     <div class="stepper-track" id="stepperTrack"></div>
+    <div class="substepper" id="substepperTrack"></div>
   </nav>
 
-  <!-- STEP 0 -->
-  <section class="panel" data-step="0">
-    <div class="sheet"><div class="crop-br"></div>
-      <span class="sheet-kicker">00 · El problema</span>
-      <h2>El ecosistema y los datos crudos</h2>
-      <p class="dek">Antes de cualquier análisis: así opera hoy el funnel, y estos son los volúmenes de enero 2026 tal como llegan de la operación. Las tasas de conversión no vienen calculadas — es el primer trabajo del análisis.</p>
+  <!-- 0.1 -->
+  <section class="panel" data-slide="0">
+    <div class="sheet">
+      <span class="sheet-kicker">00 · El problema — 1/4</span>
+      <h2>Contexto del negocio</h2>
+      <p class="dek">Antes de cualquier análisis: así opera hoy el funnel digital de Vivienda Colsubsidio.</p>
+      <p>Dos activos concentran la generación de demanda: una <strong>landing de proyectos</strong> con formulario de contacto, y un <strong>canal WhatsApp</strong> comercial con bot de autogestión que desborda a un asesor humano cuando la conversación lo requiere.</p>
+      <p>Todo lead generado sigue el mismo camino: <strong>contactado → agendado (cita comercial) → vendido</strong>. La operación busca fortalecer la conversión en cada etapa y el seguimiento del lead hasta la venta.</p>
+      <div class="callout warn">
+        <span class="ic">i</span>
+        <p>Las tasas de conversión no vienen calculadas — es el primer trabajo del análisis (Paso 01). Aquí solo se presentan los volúmenes crudos de enero 2026, tal como llegan de la operación.</p>
+      </div>
+    </div>
+  </section>
 
-      <h3 class="block-title">Cómo se genera y gestiona un lead</h3>
-      <p>Vivienda Colsubsidio capta demanda por dos activos: una <strong>landing de proyectos</strong> con formulario de contacto, y un <strong>canal WhatsApp</strong> comercial con bot de autogestión que desborda a un asesor humano cuando la conversación lo requiere. Todo lead generado sigue el mismo camino: <strong>contactado → agendado (cita comercial) → vendido</strong>.</p>
-
-      <h3 class="block-title">Canal WhatsApp — volúmenes enero 2026</h3>
+  <!-- 0.2 -->
+  <section class="panel" data-slide="1">
+    <div class="sheet">
+      <span class="sheet-kicker">00 · El problema — 2/4</span>
+      <h2>Datos crudos — Canal WhatsApp</h2>
+      <p class="dek">Volúmenes de operación de enero 2026, sin procesar.</p>
       <div class="table-scroll">
         <table>
           <thead><tr><th>Etapa del flujo</th><th class="num">Volumen</th></tr></thead>
@@ -320,8 +341,15 @@
           </tbody>
         </table>
       </div>
+    </div>
+  </section>
 
-      <h3 class="block-title">Canal Landing — volúmenes enero 2026</h3>
+  <!-- 0.3 -->
+  <section class="panel" data-slide="2">
+    <div class="sheet">
+      <span class="sheet-kicker">00 · El problema — 3/4</span>
+      <h2>Datos crudos — Canal Landing</h2>
+      <p class="dek">Volúmenes de operación de enero 2026, sin procesar.</p>
       <div class="table-scroll">
         <table>
           <thead><tr><th>Etapa del flujo</th><th class="num">Volumen</th></tr></thead>
@@ -335,9 +363,16 @@
           </tbody>
         </table>
       </div>
+    </div>
+  </section>
 
-      <h3 class="block-title">Tipificación de "no agendamiento"</h3>
-      <p class="small">Sobre los leads contactados que no agendaron.</p>
+  <!-- 0.4 -->
+  <section class="panel" data-slide="3">
+    <div class="sheet">
+      <span class="sheet-kicker">00 · El problema — 4/4</span>
+      <h2>Tipificación y datos operativos</h2>
+      <p class="dek">Contexto adicional que se cruzará con el funnel en el diagnóstico.</p>
+      <p class="small">Tipificación de "no agendamiento", sobre los leads contactados que no agendaron:</p>
       <div class="table-scroll">
         <table>
           <thead><tr><th>Motivo</th><th class="num">Participación</th></tr></thead>
@@ -350,7 +385,6 @@
           </tbody>
         </table>
       </div>
-
       <h3 class="block-title">Datos operativos (ambos canales)</h3>
       <div class="kv-grid">
         <div class="kv-card"><div class="k">1er contacto · WhatsApp</div><div class="v">8h 20m</div></div>
@@ -358,21 +392,19 @@
         <div class="kv-card"><div class="k">Leads sin gestionar · WhatsApp</div><div class="v">47%</div></div>
         <div class="kv-card"><div class="k">Citas con tipificación registrada</div><div class="v">62%</div></div>
       </div>
-
       <div class="callout warn">
-        <span class="ic">i</span>
-        <p>Se entregan los volúmenes crudos de forma intencional. El objetivo del assessment es leer estos datos, calcular las tasas de conversión, encontrar las fugas y proponer un plan — eso es lo que se desarrolla en los siguientes cuatro pasos.</p>
+        <span class="ic">→</span>
+        <p>Con esto termina la presentación del problema. Sigue el Paso 01: diagnóstico y lectura de KPIs.</p>
       </div>
     </div>
   </section>
 
-  <!-- STEP 1 -->
-  <section class="panel" data-step="1">
-    <div class="sheet"><div class="crop-br"></div>
-      <span class="sheet-kicker">01 · Diagnóstico</span>
-      <h2>Tasas de conversión y puntos de fuga</h2>
-      <p class="dek">Funnel de enero 2026, a escala real. Cada barra representa el volumen relativo a la primera etapa del canal.</p>
-
+  <!-- 1.1 -->
+  <section class="panel" data-slide="4">
+    <div class="sheet">
+      <span class="sheet-kicker">01 · Diagnóstico — 1/5</span>
+      <h2>Funnel y tasas — WhatsApp</h2>
+      <p class="dek">Cada barra representa el volumen relativo a la primera etapa del canal (8.200 conversaciones = 100%).</p>
       <div class="funnel">
         <div class="funnel-chan">
           <div class="chan-label"><span class="sw" style="background:var(--line)"></span><b>WhatsApp</b></div>
@@ -382,6 +414,29 @@
           <div class="funnel-row"><span class="stage-name">Agendados</span><div class="bar-track"><div class="bar-fill" style="width:7.4%;background:var(--line)"></div></div><span class="stage-val num">607</span></div>
           <div class="funnel-row"><span class="stage-name">Ventas</span><div class="bar-track"><div class="bar-fill" style="width:0.5%;background:var(--bad)"></div></div><span class="stage-val num hl">13</span></div>
         </div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Transición</th><th class="num">Cálculo</th><th class="num">Tasa</th></tr></thead>
+          <tbody>
+            <tr><td>Autogestión</td><td class="num">2.700 / 8.200</td><td class="num">32,9%</td></tr>
+            <tr><td>Desbordado → Contactado</td><td class="num">2.900 / 5.500</td><td class="num">52,7%</td></tr>
+            <tr><td>Contactado → Agenda</td><td class="num">607 / 2.900</td><td class="num">20,9%</td></tr>
+            <tr><td>Agenda → Venta</td><td class="num">13 / 607</td><td class="num hl">2,1%</td></tr>
+            <tr><td>Venta / Lead</td><td class="num">13 / 5.500</td><td class="num">0,24%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1.2 -->
+  <section class="panel" data-slide="5">
+    <div class="sheet">
+      <span class="sheet-kicker">01 · Diagnóstico — 2/5</span>
+      <h2>Funnel y tasas — Landing</h2>
+      <p class="dek">Cada barra representa el volumen relativo a la primera etapa del canal (48.000 sesiones = 100%).</p>
+      <div class="funnel">
         <div class="funnel-chan">
           <div class="chan-label"><span class="sw" style="background:var(--accent)"></span><b>Landing</b></div>
           <div class="funnel-row"><span class="stage-name">Sesiones</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--accent)"></div></div><span class="stage-val num">48.000</span></div>
@@ -392,58 +447,99 @@
           <div class="funnel-row"><span class="stage-name">Ventas</span><div class="bar-track"><div class="bar-fill" style="width:0.3%;background:var(--bad)"></div></div><span class="stage-val num hl">8</span></div>
         </div>
       </div>
-
-      <h3 class="block-title">Tasas etapa a etapa</h3>
       <div class="table-scroll">
         <table>
-          <thead><tr><th>Transición</th><th class="num">WhatsApp</th><th class="num">Landing</th></tr></thead>
+          <thead><tr><th>Transición</th><th class="num">Cálculo</th><th class="num">Tasa</th></tr></thead>
           <tbody>
-            <tr><td>Autogestión / Sesión→Iniciado</td><td class="num">32,9%</td><td class="num">6,7%</td></tr>
-            <tr><td>→ Contactado</td><td class="num">52,7%</td><td class="num">64,9%</td></tr>
-            <tr><td>Contactado → Agenda</td><td class="num">20,9%</td><td class="num">17,5%</td></tr>
-            <tr><td>Agenda → Venta</td><td class="num hl">2,1%</td><td class="num hl">3,8%</td></tr>
-            <tr><td>Venta / Lead</td><td class="num">0,24%</td><td class="num">0,43%</td></tr>
+            <tr><td>Sesión → Iniciado</td><td class="num">3.200 / 48.000</td><td class="num">6,7%</td></tr>
+            <tr><td>Iniciado → Completado</td><td class="num">1.850 / 3.200</td><td class="num">57,8%</td></tr>
+            <tr><td>Lead → Contactado</td><td class="num">1.200 / 1.850</td><td class="num">64,9%</td></tr>
+            <tr><td>Contactado → Agenda</td><td class="num">210 / 1.200</td><td class="num">17,5%</td></tr>
+            <tr><td>Agenda → Venta</td><td class="num">8 / 210</td><td class="num hl">3,8%</td></tr>
+            <tr><td>Venta / Lead</td><td class="num">8 / 1.850</td><td class="num">0,43%</td></tr>
           </tbody>
         </table>
       </div>
+    </div>
+  </section>
 
-      <h3 class="block-title">Los 3 puntos de mayor fuga</h3>
+  <!-- 1.3 -->
+  <section class="panel" data-slide="6">
+    <div class="sheet">
+      <span class="sheet-kicker">01 · Diagnóstico — 3/5</span>
+      <h2>Comparación Landing vs. WhatsApp</h2>
+      <p class="dek">Mismo funnel, dos canales — dónde gana cada uno.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Métrica</th><th class="num">WhatsApp</th><th class="num">Landing</th><th>Mejor</th></tr></thead>
+          <tbody>
+            <tr><td>Contactación</td><td class="num">52,7%</td><td class="num">64,9%</td><td>Landing</td></tr>
+            <tr><td>Contactado→Agenda</td><td class="num">20,9%</td><td class="num">17,5%</td><td>WhatsApp</td></tr>
+            <tr><td>Agenda→Venta</td><td class="num">2,1%</td><td class="num">3,8%</td><td>Landing (ambos muy bajos)</td></tr>
+            <tr><td>Venta/Lead</td><td class="num">0,24%</td><td class="num">0,43%</td><td>Landing, casi el doble</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>WhatsApp gana en calificar al contactado hacia una cita; Landing gana en cubrir y cerrar. Ninguno de los dos cierra a un ritmo saludable — la brecha real está adelante.</p>
+    </div>
+  </section>
+
+  <!-- 1.4 -->
+  <section class="panel" data-slide="7">
+    <div class="sheet">
+      <span class="sheet-kicker">01 · Diagnóstico — 4/5</span>
+      <h2>Los 3 puntos de mayor fuga</h2>
+      <p class="dek">Con evidencia numérica, de mayor a menor severidad de negocio.</p>
       <div class="callout bad">
         <span class="ic">01</span>
         <p><b>Agenda → Venta, la fuga más cara del negocio.</b> WhatsApp cierra solo 2,1% de sus citas (607→13) y Landing 3,8% (210→8), muy por debajo del 10-15% esperable en vivienda. Se pierden 594 citas de WhatsApp y 202 de Landing sin convertir.</p>
       </div>
       <div class="callout bad">
         <span class="ic">02</span>
-        <p><b>47% de leads de WhatsApp nunca se gestionan</b> (2.600 de 5.500). Explica la contactación de solo 52,7% pese a un tiempo de primer contacto rápido (8h20) — es un problema de cobertura/capacidad, no de velocidad, y 100% accionable por el equipo digital.</p>
+        <p><b>47% de leads de WhatsApp nunca se gestionan</b> (2.600 de 5.500). Explica la contactación de solo 52,7% pese a un tiempo de primer contacto rápido (8h20) — problema de cobertura/capacidad, no de velocidad. 100% accionable por el equipo digital.</p>
       </div>
       <div class="callout bad">
         <span class="ic">03</span>
         <p><b>93,3% de las sesiones de Landing no inician formulario</b> (44.800 de 48.000), y de los que inician, 42,2% abandona sin completar (1.350 de 3.200). La mayor fuga en volumen absoluto del funnel.</p>
       </div>
+    </div>
+  </section>
 
-      <h3 class="block-title">Qué frena la conversión — y qué es accionable</h3>
+  <!-- 1.5 -->
+  <section class="panel" data-slide="8">
+    <div class="sheet">
+      <span class="sheet-kicker">01 · Diagnóstico — 5/5</span>
+      <h2>Qué frena la conversión — y qué es accionable</h2>
+      <p class="dek">Lectura cruzada de la tipificación de no-agendamiento y los datos operativos.</p>
       <ul class="clean">
-        <li><strong>39% centrales de riesgo</strong> — no accionable por digital; restricción de política de crédito aguas arriba.</li>
-        <li><strong>21% ubicación + 14% precio (35%)</strong> — desajuste oferta/expectativa. Sí accionable: mejor segmentación de pauta y calificación temprana en el bot.</li>
-        <li><strong>19% sin tipificar + solo 62% de tipificación registrada</strong> — problema de calidad de dato que oculta el diagnóstico real; se cierra con disciplina de CRM.</li>
+        <li><strong>39% centrales de riesgo</strong> → no accionable por digital; restricción de política de crédito aguas arriba.</li>
+        <li><strong>21% ubicación + 14% precio (35%)</strong> → desajuste oferta/expectativa. Sí accionable: mejor segmentación de pauta y calificación temprana en el bot.</li>
+        <li><strong>19% sin tipificar + solo 62% de tipificación registrada</strong> → problema de calidad de dato que oculta el diagnóstico real; se cierra con disciplina de CRM.</li>
         <li><strong>SLA de contacto:</strong> WhatsApp responde más rápido (8h20) pero cubre menos (52,7%); Landing responde más lento (26h) pero cubre más (64,9%) por menor volumen. El cuello de botella de WhatsApp es capacidad, no velocidad.</li>
       </ul>
     </div>
   </section>
 
-  <!-- STEP 2 -->
-  <section class="panel" data-step="2">
-    <div class="sheet"><div class="crop-br"></div>
-      <span class="sheet-kicker">02 · Control</span>
-      <h2>KPIs y esquema de control de la venta</h2>
-      <p class="dek">Un indicador norte, los indicadores por etapa, y cómo se sigue el lead hasta que se convierte en venta.</p>
-
+  <!-- 2.1 -->
+  <section class="panel" data-slide="9">
+    <div class="sheet">
+      <span class="sheet-kicker">02 · Control — 1/4</span>
+      <h2>KPI Norte</h2>
+      <p class="dek">El indicador que conecta el trabajo digital con el resultado de negocio.</p>
       <div class="callout good">
         <span class="ic">★</span>
-        <p><b>KPI Norte: Tasa de conversión Lead → Venta</b>, por canal, medida mensual contra meta. Meta propuesta para Landing (hoy sin meta formal): ~18-20 ventas/mes, con 1.850 leads/mes y venta/lead objetivo ~1%.</p>
+        <p><b>Tasa de conversión Lead → Venta</b>, por canal, medida mensual contra meta. Permite comparar canales en igualdad de condiciones, independiente del volumen de entrada.</p>
       </div>
+      <p><strong>Meta propuesta para Landing</strong> (hoy sin meta formal): con 1.850 leads/mes y una tasa venta/lead objetivo ~1% (el doble de la actual), la meta de arranque es <strong>~18-20 ventas/mes</strong>, revisable trimestralmente.</p>
+    </div>
+  </section>
 
-      <h3 class="block-title">KPIs por etapa — hoy vs. meta</h3>
+  <!-- 2.2 -->
+  <section class="panel" data-slide="10">
+    <div class="sheet">
+      <span class="sheet-kicker">02 · Control — 2/4</span>
+      <h2>KPIs por etapa — hoy vs. meta</h2>
+      <p class="dek">Los indicadores que alimentan el KPI norte, con su meta objetivo.</p>
       <div class="kpi-grid">
         <div class="kpi-card crit"><div class="name">% leads sin gestionar (WhatsApp)</div><div class="rowvals"><span class="now">47%</span><span class="target">meta <b>&lt;15%</b></span></div><div class="bar"><i style="width:32%"></i></div></div>
         <div class="kpi-card"><div class="name">Tasa de autogestión (bot)</div><div class="rowvals"><span class="now">32,9%</span><span class="target">meta <b>≥35%</b></span></div><div class="bar"><i style="width:94%"></i></div></div>
@@ -455,7 +551,15 @@
         <div class="kpi-card crit"><div class="name">Tasa de cierre Landing</div><div class="rowvals"><span class="now">3,8%</span><span class="target">meta <b>≥10%</b></span></div><div class="bar"><i style="width:38%"></i></div></div>
         <div class="kpi-card"><div class="name">Tipificación completa</div><div class="rowvals"><span class="now">62%</span><span class="target">meta <b>≥90%</b></span></div><div class="bar"><i style="width:69%"></i></div></div>
       </div>
+    </div>
+  </section>
 
+  <!-- 2.3 -->
+  <section class="panel" data-slide="11">
+    <div class="sheet">
+      <span class="sheet-kicker">02 · Control — 3/4</span>
+      <h2>Fórmulas y estados del lead</h2>
+      <p class="dek">Cómo se mide cada KPI adicional, y el ciclo de vida único del lead en ambos canales.</p>
       <div class="table-scroll">
         <table>
           <thead><tr><th>KPI</th><th>Fórmula</th><th>Frecuencia</th><th>Fuente</th></tr></thead>
@@ -467,7 +571,6 @@
           </tbody>
         </table>
       </div>
-
       <h3 class="block-title">Estados del lead (una sola máquina de estados, ambos canales)</h3>
       <div class="flow">
         <span class="pill">Nuevo</span><span class="arrow">→</span>
@@ -479,8 +582,15 @@
         <span class="pill win">Ganado</span><span class="arrow">/</span><span class="pill lose">Perdido</span>
       </div>
       <p class="small">Cada cambio de estado queda con timestamp y responsable — es la base de las alertas y de todos los KPIs de tiempo.</p>
+    </div>
+  </section>
 
-      <h3 class="block-title">Control operativo</h3>
+  <!-- 2.4 -->
+  <section class="panel" data-slide="12">
+    <div class="sheet">
+      <span class="sheet-kicker">02 · Control — 4/4</span>
+      <h2>Control operativo</h2>
+      <p class="dek">Alertas, atribución y tablero — cómo se opera el seguimiento día a día.</p>
       <ul class="clean">
         <li><strong>Alertas de SLA:</strong> lead &gt;2h (WhatsApp) o &gt;12h (Landing) en "Nuevo" sin pasar a gestión → escalamiento automático. Reporte diario de leads huérfanos.</li>
         <li><strong>Alerta de cita:</strong> sin confirmar 24h antes; sin tipificación 48h después de realizada.</li>
@@ -490,36 +600,53 @@
     </div>
   </section>
 
-  <!-- STEP 3 -->
-  <section class="panel" data-step="3">
-    <div class="sheet"><div class="crop-br"></div>
-      <span class="sheet-kicker">03 · Experimento</span>
-      <h2>Prueba A/B — leads de WhatsApp sin gestionar</h2>
-      <p class="dek">Se ataca la fuga #2 del diagnóstico: 47% de leads que nunca reciben contacto humano. Es la palanca de mayor confianza y facilidad de las identificadas — 100% controlable por el equipo digital.</p>
-
+  <!-- 3.1 -->
+  <section class="panel" data-slide="13">
+    <div class="sheet">
+      <span class="sheet-kicker">03 · Experimento — 1/4</span>
+      <h2>Punto de fuga e hipótesis</h2>
+      <p class="dek">Se ataca la fuga #2 del diagnóstico: 47% de leads que nunca reciben contacto humano — la palanca de mayor confianza y facilidad, 100% controlable por el equipo digital.</p>
       <div class="callout warn">
         <span class="ic">H</span>
         <p><b>Hipótesis:</b> si el bot envía un mensaje de seguimiento automático con auto-agendamiento a los leads desbordados sin contacto humano en 2h, aumentará la tasa de agendamiento sin necesitar más capacidad de asesores, porque se reduce la pérdida de leads huérfanos en cola.</p>
       </div>
+    </div>
+  </section>
 
+  <!-- 3.2 -->
+  <section class="panel" data-slide="14">
+    <div class="sheet">
+      <span class="sheet-kicker">03 · Experimento — 2/4</span>
+      <h2>Diseño del experimento</h2>
+      <p class="dek">Variable a modificar: presencia/ausencia del mensaje automático a las 2h.</p>
       <div class="ab-grid">
         <div class="ab-card control"><span class="tag">Control · A</span><p>Flujo actual: el lead espera en cola hasta que un asesor lo contacta, sin límite de tiempo.</p></div>
         <div class="ab-card variant"><span class="tag">Variante · B</span><p>A las 2h sin contacto humano, el bot envía mensaje automático + link de auto-agendamiento directo.</p></div>
       </div>
+    </div>
+  </section>
 
-      <h3 class="block-title">Parámetros del experimento</h3>
+  <!-- 3.3 -->
+  <section class="panel" data-slide="15">
+    <div class="sheet">
+      <span class="sheet-kicker">03 · Experimento — 3/4</span>
+      <h2>Métrica, muestra y criterio de decisión</h2>
       <div class="stat-row">
         <div class="stat-box"><div class="n">11,0%</div><div class="l">Línea base agendamiento</div></div>
         <div class="stat-box"><div class="n">≥14,0%</div><div class="l">Meta de agendamiento (B)</div></div>
         <div class="stat-box"><div class="n">~1.900</div><div class="l">Leads por grupo</div></div>
         <div class="stat-box"><div class="n">3–4 sem.</div><div class="l">Duración estimada</div></div>
       </div>
-
-      <h3 class="block-title">Métrica y criterio de decisión</h3>
       <p><strong>Métrica primaria:</strong> tasa de agendamiento sobre leads recibidos. <strong>Guardrails:</strong> % sin gestionar a 48h, tasa de asistencia, tasa de cierre.</p>
       <p><strong>Decisión:</strong> B gana con +3pp o más sobre el 11,0% base, significancia del 95% (test de dos proporciones, una cola), sin caer la asistencia a cita más de 5pp frente al control.</p>
+    </div>
+  </section>
 
-      <h3 class="block-title">Riesgos y sesgos</h3>
+  <!-- 3.4 -->
+  <section class="panel" data-slide="16">
+    <div class="sheet">
+      <span class="sheet-kicker">03 · Experimento — 4/4</span>
+      <h2>Riesgos y sesgos</h2>
       <ul class="clean">
         <li>Contaminación entre grupos si el mismo asesor atiende ambos — mitigar con asignación aleatoria a nivel de lead dentro del bot.</li>
         <li>Estacionalidad: enero puede no generalizar a otros meses.</li>
@@ -530,27 +657,40 @@
     </div>
   </section>
 
-  <!-- STEP 4 -->
-  <section class="panel" data-step="4">
-    <div class="sheet"><div class="crop-br"></div>
-      <span class="sheet-kicker">04 · Plan de acción</span>
-      <h2>Iniciativas priorizadas e impacto esperado</h2>
-      <p class="dek">Cuatro iniciativas, dos por canal, priorizadas con un modelo ICE explícito (Impact / Confidence / Ease) y su efecto proyectado sobre el funnel de enero.</p>
+  <!-- 4.1 -->
+  <section class="panel" data-slide="17">
+    <div class="sheet">
+      <span class="sheet-kicker">04 · Plan de acción — 1/3</span>
+      <h2>Iniciativas propuestas</h2>
+      <p class="dek">Cuatro iniciativas, dos por canal, más una transversal de calidad de dato.</p>
+      <ul class="clean">
+        <li><strong>A. WhatsApp — auto-seguimiento a leads sin gestionar</strong> (bot dispara mensaje + link de auto-agendamiento a las 2h sin contacto humano — el test del Paso 03). Ataca el 47% de leads sin gestionar.</li>
+        <li><strong>B. WhatsApp — optimizar agenda→venta</strong> (guion de cierre estandarizado + recordatorio automatizado pre-cita + confirmación de asistencia). Ataca la fuga más crítica: 2,1% de cierre.</li>
+        <li><strong>C. Landing — acortar/rediseñar el formulario</strong> (menos campos, autocompletado, guardado de progreso). Ataca el 42,2% de abandono.</li>
+        <li><strong>D. Landing — CRO de la página</strong> (headline claro, CTA visible, prueba social, expectativas de precio/zona explícitas). Ataca el 93,3% de sesiones que nunca inician formulario.</li>
+        <li><em>Bonus — E. Ambos canales: prefiltro de riesgo crediticio + disciplina de tipificación en CRM</em> — libera capacidad comercial y cierra el hueco de calidad de dato.</li>
+      </ul>
+    </div>
+  </section>
 
+  <!-- 4.2 -->
+  <section class="panel" data-slide="18">
+    <div class="sheet">
+      <span class="sheet-kicker">04 · Plan de acción — 2/3</span>
+      <h2>Priorización ICE e impacto proyectado</h2>
+      <p class="dek">Impact / Confidence / Ease, escala 1-10, y su efecto directo sobre las ventas del funnel de enero.</p>
       <div class="table-scroll">
         <table>
-          <thead><tr><th></th><th>Iniciativa</th><th class="num">Impact</th><th class="num">Confidence</th><th class="num">Ease</th><th class="num">ICE</th></tr></thead>
+          <thead><tr><th></th><th>Iniciativa</th><th class="num">Impact</th><th class="num">Confid.</th><th class="num">Ease</th><th class="num">ICE</th></tr></thead>
           <tbody>
-            <tr><td><span class="ice-rank">1</span></td><td><b>A</b> · WhatsApp — auto-seguimiento a leads sin gestionar</td><td class="num">8</td><td class="num">8</td><td class="num">8</td><td class="num hl">8,0</td></tr>
-            <tr><td><span class="ice-rank">2</span></td><td><b>C</b> · Landing — formulario corto</td><td class="num">5</td><td class="num">7</td><td class="num">8</td><td class="num hl">6,7</td></tr>
-            <tr><td><span class="ice-rank">3</span></td><td><b>B</b> · WhatsApp — optimizar cierre agenda→venta</td><td class="num">9</td><td class="num">5</td><td class="num">5</td><td class="num hl">6,3</td></tr>
-            <tr><td><span class="ice-rank">4</span></td><td><b>D</b> · Landing — CRO de la página (top funnel)</td><td class="num">6</td><td class="num">5</td><td class="num">6</td><td class="num hl">5,7</td></tr>
-            <tr><td><span class="ice-rank" style="background:var(--muted)">5</span></td><td><b>E</b> · Ambos — prefiltro de riesgo + tipificación (bonus)</td><td class="num">4</td><td class="num">6</td><td class="num">4</td><td class="num">4,7</td></tr>
+            <tr><td><span class="ice-rank">1</span></td><td><b>A</b> · Auto-seguimiento WhatsApp</td><td class="num">8</td><td class="num">8</td><td class="num">8</td><td class="num hl">8,0</td></tr>
+            <tr><td><span class="ice-rank">2</span></td><td><b>C</b> · Formulario corto Landing</td><td class="num">5</td><td class="num">7</td><td class="num">8</td><td class="num hl">6,7</td></tr>
+            <tr><td><span class="ice-rank">3</span></td><td><b>B</b> · Cierre agenda→venta WhatsApp</td><td class="num">9</td><td class="num">5</td><td class="num">5</td><td class="num hl">6,3</td></tr>
+            <tr><td><span class="ice-rank">4</span></td><td><b>D</b> · CRO landing (top funnel)</td><td class="num">6</td><td class="num">5</td><td class="num">6</td><td class="num hl">5,7</td></tr>
+            <tr><td><span class="ice-rank" style="background:var(--muted)">5</span></td><td><b>E</b> · Prefiltro riesgo + tipificación</td><td class="num">4</td><td class="num">6</td><td class="num">4</td><td class="num">4,7</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="small">A queda primero por su alta confianza y facilidad (ya diseñada como A/B en el paso 3). B tiene el mayor impacto potencial pero depende del equipo comercial, de ahí su menor confianza.</p>
-
       <h3 class="block-title">Impacto proyectado en ventas/mes</h3>
       <div class="impact-compare">
         <div class="impact-chan">
@@ -570,11 +710,20 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- 4.3 -->
+  <section class="panel" data-slide="19">
+    <div class="sheet">
+      <span class="sheet-kicker">04 · Plan de acción — 3/3</span>
+      <h2>Lectura honesta frente a la meta</h2>
       <div class="callout bad">
         <span class="ic">!</span>
-        <p><b>Lectura honesta:</b> A+B llevan WhatsApp de 13 a ~34 ventas/mes (2,6x) — pero no cierran la meta de 50/mes solo optimizando conversión sobre los 5.500 leads actuales. Cerrar el 100% de la brecha exige sumar una palanca de <strong>volumen</strong> (más pauta, más conversaciones entrantes), no solo de conversión.</p>
+        <p><b>A+B llevan WhatsApp de 13 a ~34 ventas/mes (2,6x)</b> — pero no cierran la meta de 50/mes solo optimizando conversión sobre los 5.500 leads actuales. Cerrar el 100% de la brecha exige sumar una palanca de <strong>volumen</strong> (más pauta, más conversaciones entrantes), no solo de conversión.</p>
       </div>
+      <p>Para Landing, C+D llevarían de 8 a <strong>~14 ventas/mes</strong>, cerca de la meta propuesta de 18-20/mes — alcanzable en 2-3 meses de iteración adicional sobre estas mismas iniciativas.</p>
+      <p class="small">Fin del expediente. Usa el stepper superior o las flechas del teclado para revisar cualquier paso.</p>
     </div>
   </section>
 
@@ -589,57 +738,94 @@
 
 <script>
   (function () {
-    var steps = [
-      { label: "El problema" },
-      { label: "Diagnóstico" },
-      { label: "KPIs & Control" },
-      { label: "Prueba A/B" },
-      { label: "Plan de acción" }
+    var mainLabels = ["El problema", "Diagnóstico", "KPIs & Control", "Prueba A/B", "Plan de acción"];
+    var slides = [
+      { main: 0, sub: 0, subLabel: "Contexto" },
+      { main: 0, sub: 1, subLabel: "Datos WhatsApp" },
+      { main: 0, sub: 2, subLabel: "Datos Landing" },
+      { main: 0, sub: 3, subLabel: "Tipificación y operativos" },
+      { main: 1, sub: 0, subLabel: "Funnel WhatsApp" },
+      { main: 1, sub: 1, subLabel: "Funnel Landing" },
+      { main: 1, sub: 2, subLabel: "Comparación" },
+      { main: 1, sub: 3, subLabel: "Top 3 fugas" },
+      { main: 1, sub: 4, subLabel: "Interpretación" },
+      { main: 2, sub: 0, subLabel: "KPI Norte" },
+      { main: 2, sub: 1, subLabel: "KPIs por etapa" },
+      { main: 2, sub: 2, subLabel: "Fórmulas y estados" },
+      { main: 2, sub: 3, subLabel: "Control operativo" },
+      { main: 3, sub: 0, subLabel: "Hipótesis" },
+      { main: 3, sub: 1, subLabel: "Diseño" },
+      { main: 3, sub: 2, subLabel: "Criterio de decisión" },
+      { main: 3, sub: 3, subLabel: "Riesgos" },
+      { main: 4, sub: 0, subLabel: "Iniciativas" },
+      { main: 4, sub: 1, subLabel: "Priorización e impacto" },
+      { main: 4, sub: 2, subLabel: "Conclusión" }
     ];
+
     var current = 0;
-    var track = document.getElementById("stepperTrack");
+    var mainTrack = document.getElementById("stepperTrack");
+    var subTrack = document.getElementById("substepperTrack");
     var panels = Array.prototype.slice.call(document.querySelectorAll(".panel"));
     var prevBtn = document.getElementById("prevBtn");
     var nextBtn = document.getElementById("nextBtn");
     var navCount = document.getElementById("navCount");
 
-    steps.forEach(function (s, i) {
+    mainLabels.forEach(function (label, i) {
       var btn = document.createElement("button");
       btn.type = "button";
       btn.className = "step-node";
-      btn.setAttribute("aria-label", "Paso " + i + ": " + s.label);
-      btn.innerHTML = '<span class="dot">' + i + '</span><span class="label">' + s.label + '</span>';
-      btn.addEventListener("click", function () { goTo(i); });
-      track.appendChild(btn);
-      if (i < steps.length - 1) {
+      btn.setAttribute("aria-label", "Paso " + i + ": " + label);
+      btn.innerHTML = '<span class="dot">' + i + '</span><span class="label">' + label + '</span>';
+      btn.addEventListener("click", function () {
+        goTo(slides.findIndex(function (s) { return s.main === i; }));
+      });
+      mainTrack.appendChild(btn);
+      if (i < mainLabels.length - 1) {
         var conn = document.createElement("div");
         conn.className = "step-connector";
-        track.appendChild(conn);
+        mainTrack.appendChild(conn);
       }
     });
 
+    function renderSubStepper() {
+      subTrack.innerHTML = "";
+      var mainIdx = slides[current].main;
+      slides.forEach(function (s, i) {
+        if (s.main !== mainIdx) return;
+        var chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "subchip" + (i === current ? " active" : "") + (i < current ? " done" : "");
+        chip.innerHTML = '<span class="n">' + mainIdx + "." + (s.sub + 1) + "</span>" + s.subLabel;
+        chip.addEventListener("click", function () { goTo(i); });
+        subTrack.appendChild(chip);
+      });
+    }
+
     function render() {
       panels.forEach(function (p) {
-        p.classList.toggle("active", Number(p.getAttribute("data-step")) === current);
+        p.classList.toggle("active", Number(p.getAttribute("data-slide")) === current);
       });
-      var nodes = track.querySelectorAll(".step-node");
-      var conns = track.querySelectorAll(".step-connector");
+      var mainIdx = slides[current].main;
+      var nodes = mainTrack.querySelectorAll(".step-node");
+      var conns = mainTrack.querySelectorAll(".step-connector");
       nodes.forEach(function (n, i) {
-        n.classList.toggle("active", i === current);
-        n.classList.toggle("done", i < current);
+        n.classList.toggle("active", i === mainIdx);
+        n.classList.toggle("done", i < mainIdx);
       });
-      conns.forEach(function (c, i) {
-        c.classList.toggle("filled", i < current);
-      });
+      conns.forEach(function (c, i) { c.classList.toggle("filled", i < mainIdx); });
+      renderSubStepper();
+
       prevBtn.disabled = current === 0;
-      nextBtn.disabled = current === steps.length - 1;
-      nextBtn.textContent = current === steps.length - 1 ? "Fin ✓" : "Siguiente →";
-      navCount.textContent = "Paso " + current + " de " + (steps.length - 1) + " — " + steps[current].label;
+      nextBtn.disabled = current === slides.length - 1;
+      nextBtn.textContent = current === slides.length - 1 ? "Fin ✓" : "Siguiente →";
+      navCount.innerHTML = '<span class="maintag">Paso ' + mainIdx + ' · ' + mainLabels[mainIdx] + '</span> — ' +
+        (slides[current].sub + 1) + ' de ' + slides.filter(function (s) { return s.main === mainIdx; }).length +
+        ' · ' + slides[current].subLabel;
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function goTo(i) {
-      current = Math.max(0, Math.min(steps.length - 1, i));
+      current = Math.max(0, Math.min(slides.length - 1, i));
       render();
     }
 
