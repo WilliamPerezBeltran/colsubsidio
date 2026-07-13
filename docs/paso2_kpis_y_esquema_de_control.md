@@ -4,23 +4,27 @@
 
 **Tasa de conversión Lead → Venta (%)**, por canal, medida mensualmente contra la meta de negocio (WhatsApp: implícita en 600 ventas/año ≈ 50/mes; Landing: meta a proponer). Es el indicador que más directamente conecta el trabajo del equipo digital con el resultado de negocio, y permite comparar canales en igualdad de condiciones (independiente del volumen de entrada).
 
-**Meta propuesta para Landing:** con 1.850 leads/mes y una tasa de venta/lead objetivo de ~1% (el doble de lo actual), la meta razonable de arranque sería **~18-20 ventas/mes**, revisable trimestralmente según la curva de mejora real.
+**Meta propuesta para Landing:** **~15 ventas/mes (180/año)** a 6 meses, revisable trimestralmente — objetivo deliberadamente conservador frente al 0,43% de venta/lead actual, para no comprometer una cifra que la operación no ha sostenido en el tiempo.
 
 ## KPIs por etapa
 
+Metas recalibradas a un nivel exigente pero alcanzable, unificadas entre canales donde aplica (en vez de metas divergentes por canal).
+
 | KPI | Fórmula | Frecuencia | Meta / Benchmark | Fuente |
 |---|---|---|---|---|
-| Tasa de autogestión (bot) | Resueltas bot / Conversaciones entrantes | Diaria | ≥35% (vs. 32,9% actual) | Logs del bot |
-| % leads sin gestionar | Leads no contactados / Leads recibidos | Diaria | <15% (vs. 47% actual) | CRM |
-| SLA de primer contacto | % de leads contactados dentro de la ventana objetivo (ej. <4h WhatsApp, <12h Landing) | Diaria | 90% dentro de SLA | CRM / timestamps |
-| Tasa de contactación | Contactados / Leads recibidos | Semanal | WhatsApp ≥70%, Landing ≥75% | CRM |
-| Tasa de agendamiento | Agendados / Contactados | Semanal | ≥25% ambos canales | CRM |
-| Tasa de asistencia a cita (show rate) | Citas asistidas / Citas agendadas | Semanal | ≥70% (no medido hoy — implementar) | CRM / agenda comercial |
-| Tasa de cierre | Ventas / Agendados | Mensual | ≥10% (vs. 2,1%–3,8% actual) | CRM / backoffice ventas |
-| % tipificación completa | Gestiones tipificadas / Gestiones totales | Semanal | ≥90% (vs. 62% actual) | CRM |
-| CPL (costo por lead) | Inversión en medios / Leads generados | Mensual | Benchmark sector vivienda | Pauta / Ads Manager |
-| CPA (costo por venta) | Inversión en medios / Ventas | Mensual | Definir con Finanzas | Pauta + CRM |
-| Venta / Lead (norte por canal) | Ventas / Leads generados | Mensual | WhatsApp ≥0,9%, Landing ≥1% | CRM |
+| Venta / Lead (norte) | Ventas / Leads generados | Mensual | WhatsApp ≥0,9% · Landing ≥0,8% | CRM |
+| Tasa de autogestión | Resueltas bot / Conversaciones entrantes | Diaria | ≥35% (vs. 32,9% actual) | Logs del bot |
+| % leads sin gestionar | No contactados / Leads recibidos | Diaria (alerta) | <15% (vs. 47% actual) | CRM |
+| SLA de primer contacto | Tiempo lead → 1er contacto | Diaria | <4h (vs. 8h20 WhatsApp / 26h Landing actual) | CRM / timestamps |
+| Tasa de contactación | Contactados / Leads recibidos | Semanal | ≥80% (vs. 52,7% WhatsApp / 64,9% Landing actual) | CRM |
+| Tasa de agendamiento | Agendados / Contactados | Semanal | ≥20-22% (vs. 20,9% WhatsApp / 17,5% Landing actual) | CRM |
+| Tasa de asistencia a cita | Asistencias / Agendas | Semanal | ≥70% (nuevo — no medido hoy) | Agenda comercial |
+| Tasa de cierre | Ventas / Agendas | Mensual | ≥5% (vs. 2,1% WhatsApp / 3,8% Landing actual) | CRM / backoffice ventas |
+| % tipificación completa | Con causa / No-agenda total | Semanal | ≥90% (vs. 62% actual) | CRM |
+| CPL | Inversión en medios / Leads generados | Mensual | Benchmark sector | Ads Manager |
+| CPA | Inversión en medios / Ventas | Mensual | A definir con Finanzas | Pauta + CRM |
+
+*Nota: la meta de agendamiento y cierre se bajó frente a la versión inicial (25% y 10%) a niveles más realistas y defendibles (20-22% y 5%), evitando comprometer una mejora que triplicaría el desempeño actual en pocos meses.*
 
 ## Esquema de control y seguimiento del lead hasta la venta
 
@@ -38,8 +42,8 @@ Cada cambio de estado queda con timestamp y responsable — es la base de todos 
 
 ### 2. Alertas de SLA de contacto
 
-- Alerta automática cuando un lead lleva > umbral definido (ej. 4h WhatsApp / 12h Landing) en estado "Nuevo" sin pasar a "En gestión".
-- Reporte diario de leads "huérfanos" (vencidos de SLA) a supervisión comercial.
+- Alerta a las 2h sin contactar; escalamiento automático a supervisor a las 4h si el lead sigue en "Nuevo" — meta <4h de primer contacto en ambos canales.
+- Reporte diario de leads "huérfanos" (vencidos de SLA) por asesor.
 - Alerta de cita sin confirmar 24h antes de la fecha agendada.
 - Alerta de cita realizada sin tipificación registrada a las 48h (cierra el hueco del 38% sin tipificar).
 

@@ -33,16 +33,16 @@
 | Agenda→Venta | 2,1% | 3,8% | Landing (pero ambos muy bajos) |
 | Venta/Lead | 0,24% | 0,43% | Landing casi el doble |
 
-## Los 3 puntos de mayor fuga (con evidencia numérica)
+## Los 3 puntos de mayor fuga (con evidencia numérica y costo estimado)
 
-**1. Agenda→Venta — la fuga más crítica en términos de negocio.**
-WhatsApp convierte solo **2,1%** de las citas en venta (607→13) y Landing **3,8%** (210→8). En un funnel inmobiliario típico se esperaría ~10-15% cita→venta. Aquí se pierden **594 citas de WhatsApp** y **202 de Landing** sin convertir — es la etapa más cercana a la caja y la que más aleja de la meta (13 ventas vs. ~50/mes requeridas).
+**1. WhatsApp: 47% de leads sin gestionar** (2.600 de 5.500 leads nunca contactados) — **la fuga de mayor costo real**.
+Aplicando las tasas actuales aguas abajo (20,9% contactado→agenda, 2,1% agenda→venta), esos 2.600 leads representan **≈11 ventas/mes potenciales perdidas**. El tiempo promedio de primer contacto es rápido (8h20) cuando sí ocurre — es un problema de cobertura/capacidad, no de velocidad. 100% accionable por el equipo digital/operación (enrutamiento, dimensionamiento del equipo comercial, priorización de cola).
 
-**2. WhatsApp: 47% de leads sin gestionar** (2.600 de 5.500 leads nunca contactados).
-Esto explica la tasa de contactación de solo 52,7%, pese a que el tiempo promedio de primer contacto es rápido (8h20). Es decir: cuando sí se gestiona un lead se hace rápido, pero casi la mitad simplemente no entra al proceso — problema de cobertura/capacidad, no de velocidad. 100% accionable por el equipo digital/operación (enrutamiento, dimensionamiento del equipo comercial, priorización de cola).
+**2. Agenda→Venta — 98% de las citas agendadas no cierran.**
+WhatsApp convierte solo **2,1%** de las citas en venta (607→13) y Landing **3,8%** (210→8). Se pierden **594 citas de WhatsApp** y **202 de Landing** sin convertir — la fuga de mayor gravedad relativa, aunque más difícil de intervenir solo desde digital porque depende del proceso comercial.
 
-**3. Landing: 93,3% de las sesiones no inician formulario** (44.800 de 48.000) y, de los que sí inician, **42,2% abandona antes de completar** (1.350 de 3.200).
-Es la fuga de mayor volumen absoluto del funnel y la más clásica de optimización CRO (UX del formulario, fricción, copy, targeting de tráfico).
+**3. Landing: abandono de formulario 42%** (1.350 de 3.200 formularios iniciados no completados).
+Es además la fuga de mayor volumen absoluto de todo el funnel: 93,3% de las 48.000 sesiones nunca llega a iniciar formulario.
 
 ## Interpretación de la tipificación de "no agendamiento" y datos operativos
 

@@ -295,13 +295,20 @@
   /* ---------- Print / PDF export ---------- */
   @media print {
     .stepper, .nav-row, button.navbtn { display: none !important; }
-    body { background: #fff !important; }
-    body::before { display: none !important; }
+    html, body { background: #fff !important; background-image: none !important; }
+    body::before { display: none !important; content: none !important; background: transparent !important; position: static !important; width: 0 !important; height: 0 !important; }
     .wrap { max-width: 100%; padding: 0; }
     .panel { display: block !important; }
-    .panel .sheet { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; page-break-after: always; animation: none !important; }
+    .panel .sheet { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; page-break-after: always; animation: none !important; padding: 1.3rem 1.4rem 1.5rem; }
     .panel:last-of-type .sheet { page-break-after: auto; }
     .kpi-card, .callout, .ab-card, .stat-box { break-inside: avoid; }
+    table { font-size: 0.78rem; }
+    thead th, tbody td { padding: 0.4rem 0.6rem; }
+    h3.block-title { margin: 1rem 0 0.5rem; padding-top: 0.8rem; }
+    .sheet .dek { margin: 0.2rem 0 1rem; }
+    .flow { margin: 0.7rem 0 0.9rem; gap: 0.3rem; }
+    .flow .pill { padding: 0.28rem 0.6rem; font-size: 0.7rem; }
+    .kv-grid, .kpi-grid { gap: 0.5rem; }
   }
 
   /* ---------- Print-mode (on-screen, used as a robust fallback to @media print) ---------- */
@@ -450,7 +457,7 @@
           <div class="funnel-row"><span class="stage-name">Leads (desbordados)</span><div class="bar-track"><div class="bar-fill" style="width:67.1%;background:var(--line)"></div></div><span class="stage-val num">5.500</span></div>
           <div class="funnel-row"><span class="stage-name">Contactados</span><div class="bar-track"><div class="bar-fill" style="width:35.4%;background:var(--line)"></div></div><span class="stage-val num">2.900</span></div>
           <div class="funnel-row"><span class="stage-name">Agendados</span><div class="bar-track"><div class="bar-fill" style="width:7.4%;background:var(--line)"></div></div><span class="stage-val num">607</span></div>
-          <div class="funnel-row"><span class="stage-name">Ventas</span><div class="bar-track"><div class="bar-fill" style="width:0.5%;background:var(--bad)"></div></div><span class="stage-val num hl">13</span></div>
+          <div class="funnel-row"><span class="stage-name">Ventas</span><div class="bar-track"><div class="bar-fill" style="width:0.16%;background:var(--bad)"></div></div><span class="stage-val num hl">13</span></div>
         </div>
       </div>
       <div class="table-scroll">
@@ -482,7 +489,7 @@
           <div class="funnel-row"><span class="stage-name">Leads (completados)</span><div class="bar-track"><div class="bar-fill" style="width:3.9%;background:var(--accent)"></div></div><span class="stage-val num">1.850</span></div>
           <div class="funnel-row"><span class="stage-name">Contactados</span><div class="bar-track"><div class="bar-fill" style="width:2.5%;background:var(--accent)"></div></div><span class="stage-val num">1.200</span></div>
           <div class="funnel-row"><span class="stage-name">Agendados</span><div class="bar-track"><div class="bar-fill" style="width:0.5%;background:var(--accent)"></div></div><span class="stage-val num">210</span></div>
-          <div class="funnel-row"><span class="stage-name">Ventas</span><div class="bar-track"><div class="bar-fill" style="width:0.3%;background:var(--bad)"></div></div><span class="stage-val num hl">8</span></div>
+          <div class="funnel-row"><span class="stage-name">Ventas</span><div class="bar-track"><div class="bar-fill" style="width:0.02%;background:var(--bad)"></div></div><span class="stage-val num hl">8</span></div>
         </div>
       </div>
       <div class="table-scroll">
@@ -583,7 +590,7 @@
         <div class="kpi-card"><div class="name">Tasa de autogestión (bot)</div><div class="rowvals"><span class="now">32,9%</span><span class="target">meta <b>≥35%</b></span></div><div class="bar"><i style="width:94%"></i></div></div>
         <div class="kpi-card"><div class="name">SLA primer contacto</div><div class="rowvals"><span class="now">8h20 · 26h</span><span class="target">meta <b>&lt;4h</b></span></div></div>
         <div class="kpi-card"><div class="name">Tasa de contactación</div><div class="rowvals"><span class="now">52,7% · 64,9%</span><span class="target">meta <b>≥80%</b></span></div><div class="bar"><i style="width:73%"></i></div></div>
-        <div class="kpi-card"><div class="name">Contactado→Agenda</div><div class="rowvals"><span class="now">20,9% · 17,5%</span><span class="target">meta <b>≥20%</b></span></div><div class="bar"><i style="width:96%"></i></div></div>
+        <div class="kpi-card"><div class="name">Contactado→Agenda</div><div class="rowvals"><span class="now">20,9% · 17,5%</span><span class="target">meta <b>≥20-22%</b></span></div><div class="bar"><i style="width:91%"></i></div></div>
         <div class="kpi-card"><div class="name">Tasa de asistencia a cita <em>(nuevo)</em></div><div class="rowvals"><span class="now">no medido hoy</span><span class="target">meta <b>≥70%</b></span></div></div>
         <div class="kpi-card crit"><div class="name">Tasa de cierre (Agenda→Venta)</div><div class="rowvals"><span class="now">2,1% · 3,8%</span><span class="target">meta <b>≥5%</b></span></div><div class="bar"><i style="width:59%"></i></div></div>
         <div class="kpi-card"><div class="name">Tipificación completa</div><div class="rowvals"><span class="now">62%</span><span class="target">meta <b>≥90%</b></span></div><div class="bar"><i style="width:69%"></i></div></div>
@@ -597,15 +604,22 @@
     <div class="sheet">
       <span class="sheet-kicker">02 · Control — 3/4</span>
       <h2>Fórmulas y estados del lead</h2>
-      <p class="dek">Cómo se mide cada KPI adicional, y el ciclo de vida único del lead en ambos canales.</p>
+      <p class="dek">Fórmula, frecuencia, meta y fuente de cada KPI del set — y el ciclo de vida único del lead en ambos canales.</p>
       <div class="table-scroll">
         <table>
-          <thead><tr><th>KPI</th><th>Fórmula</th><th>Frecuencia</th><th>Fuente</th></tr></thead>
+          <thead><tr><th>KPI</th><th>Fórmula</th><th>Frecuencia</th><th>Meta</th><th>Fuente</th></tr></thead>
           <tbody>
-            <tr><td>SLA de primer contacto</td><td>% contactados dentro de ventana objetivo</td><td>Diaria</td><td>CRM / timestamps</td></tr>
-            <tr><td>Tasa de asistencia a cita</td><td>Citas asistidas / Citas agendadas</td><td>Semanal</td><td>Agenda comercial</td></tr>
-            <tr><td>CPL</td><td>Inversión en medios / Leads generados</td><td>Mensual</td><td>Ads Manager</td></tr>
-            <tr><td>CPA</td><td>Inversión en medios / Ventas</td><td>Mensual</td><td>Pauta + CRM</td></tr>
+            <tr><td>Venta / Lead <em>(norte)</em></td><td>Ventas / Leads generados</td><td>Mensual</td><td>WhatsApp ≥0,9% · Landing ≥0,8%</td><td>CRM</td></tr>
+            <tr><td>Tasa de autogestión</td><td>Resueltas bot / Conversaciones entrantes</td><td>Diaria</td><td>≥35%</td><td>Logs del bot</td></tr>
+            <tr><td>% leads sin gestionar</td><td>No contactados / Leads recibidos</td><td>Diaria (alerta)</td><td>&lt;15%</td><td>CRM</td></tr>
+            <tr><td>SLA de primer contacto</td><td>Tiempo lead → 1er contacto</td><td>Diaria</td><td>&lt;4h</td><td>CRM / timestamps</td></tr>
+            <tr><td>Tasa de contactación</td><td>Contactados / Leads recibidos</td><td>Semanal</td><td>≥80%</td><td>CRM</td></tr>
+            <tr><td>Tasa de agendamiento</td><td>Agendados / Contactados</td><td>Semanal</td><td>≥20-22%</td><td>CRM</td></tr>
+            <tr><td>Tasa de asistencia a cita</td><td>Asistencias / Agendas</td><td>Semanal</td><td>≥70% <em>(nuevo)</em></td><td>Agenda comercial</td></tr>
+            <tr><td>Tasa de cierre</td><td>Ventas / Agendas</td><td>Mensual</td><td>≥5%</td><td>CRM / backoffice ventas</td></tr>
+            <tr><td>% tipificación completa</td><td>Con causa / No-agenda total</td><td>Semanal</td><td>≥90%</td><td>CRM</td></tr>
+            <tr><td>CPL</td><td>Inversión en medios / Leads generados</td><td>Mensual</td><td>Benchmark sector</td><td>Ads Manager</td></tr>
+            <tr><td>CPA</td><td>Inversión en medios / Ventas</td><td>Mensual</td><td>A definir con Finanzas</td><td>Pauta + CRM</td></tr>
           </tbody>
         </table>
       </div>
@@ -643,7 +657,7 @@
     <div class="sheet">
       <span class="sheet-kicker">03 · Experimento — 1/4</span>
       <h2>Punto de fuga e hipótesis</h2>
-      <p class="dek">Se ataca la fuga #2 del diagnóstico: 47% de leads que nunca reciben contacto humano — la palanca de mayor confianza y facilidad, 100% controlable por el equipo digital.</p>
+      <p class="dek">Se ataca la fuga #1 del diagnóstico: 47% de leads que nunca reciben contacto humano — la de mayor costo (≈11 ventas/mes) y la palanca de mayor confianza y facilidad, 100% controlable por el equipo digital.</p>
       <div class="callout warn">
         <span class="ic">H</span>
         <p><b>Hipótesis:</b> si el bot envía un mensaje de seguimiento automático con auto-agendamiento a los leads desbordados sin contacto humano en 2h, aumentará la tasa de agendamiento sin necesitar más capacidad de asesores, porque se reduce la pérdida de leads huérfanos en cola.</p>

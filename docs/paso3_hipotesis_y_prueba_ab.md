@@ -2,7 +2,7 @@
 
 ## Punto de fuga elegido
 
-**WhatsApp: 47% de leads sin gestionar** (fuga #2 del diagnóstico). Se elige sobre "agenda→venta" porque es 100% accionable por el equipo digital (cambio en el flujo del bot, no depende del proceso comercial/ventas) y es la palanca más rápida de probar con impacto medible en pocas semanas.
+**WhatsApp: 47% de leads sin gestionar** (fuga #1 del diagnóstico, la de mayor costo: ≈11 ventas/mes potenciales perdidas). Se elige sobre "agenda→venta" porque es 100% accionable por el equipo digital (cambio en el flujo del bot, no depende del proceso comercial/ventas) y es la palanca más rápida de probar con impacto medible en pocas semanas.
 
 ## Hipótesis
 
