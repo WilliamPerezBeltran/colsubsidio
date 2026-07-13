@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Expediente de Conversión — Vivienda Digital</title>
+<style>
+  :root {
+    --bg: #EEF2F5;
+    --surface: #FFFFFF;
+    --surface-2: #E4EAEF;
+    --ink: #16283A;
+    --muted: #55697B;
+    --accent: #C05621;
+    --accent-ink: #FFFFFF;
+    --line: #2E6E8C;
+    --border: #C7D2DA;
+    --good: #2F7D5B;
+    --warn: #B7791F;
+    --bad: #B23B3B;
+    --good-bg: #E3F1EA;
+    --warn-bg: #FBF0DD;
+    --bad-bg: #F8E7E5;
+    --shadow: 0 1px 2px rgba(22,40,58,0.06), 0 8px 24px rgba(22,40,58,0.08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0F1B26;
+      --surface: #16242F;
+      --surface-2: #1D2E3B;
+      --ink: #E7EDF2;
+      --muted: #93A6B5;
+      --accent: #E2915C;
+      --accent-ink: #16283A;
+      --line: #6FB2CF;
+      --border: #29404F;
+      --good: #4FAE84;
+      --warn: #D6A94B;
+      --bad: #E06767;
+      --good-bg: #17332A;
+      --warn-bg: #332A16;
+      --bad-bg: #351D1D;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F1B26; --surface: #16242F; --surface-2: #1D2E3B; --ink: #E7EDF2;
+    --muted: #93A6B5; --accent: #E2915C; --accent-ink: #16283A; --line: #6FB2CF;
+    --border: #29404F; --good: #4FAE84; --warn: #D6A94B; --bad: #E06767;
+    --good-bg: #17332A; --warn-bg: #332A16; --bad-bg: #351D1D;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+  }
+  :root[data-theme="light"] {
+    --bg: #EEF2F5; --surface: #FFFFFF; --surface-2: #E4EAEF; --ink: #16283A;
+    --muted: #55697B; --accent: #C05621; --accent-ink: #FFFFFF; --line: #2E6E8C;
+    --border: #C7D2DA; --good: #2F7D5B; --warn: #B7791F; --bad: #B23B3B;
+    --good-bg: #E3F1EA; --warn-bg: #FBF0DD; --bad-bg: #F8E7E5;
+    --shadow: 0 1px 2px rgba(22,40,58,0.06), 0 8px 24px rgba(22,40,58,0.08);
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-attachment: fixed;
+    background-position: -1px -1px;
+  }
+  @media (prefers-color-scheme: dark) { body { opacity: 1; } }
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background: var(--bg);
+    opacity: 0.94;
+    z-index: -1;
+  }
+
+  h1, h2, h3 { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif; text-wrap: balance; margin: 0; }
+  .mono { font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", Consolas, "Liberation Mono", monospace; }
+  .num { font-variant-numeric: tabular-nums; }
+
+  a { color: var(--line); }
+
+  .wrap { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem 6rem; }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    display: flex; flex-direction: column; gap: 0.6rem;
+    padding-bottom: 1.75rem; margin-bottom: 1.75rem;
+    border-bottom: 2px solid var(--line);
+  }
+  .masthead .eyebrow {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--line); font-weight: 600;
+  }
+  .masthead h1 { font-size: clamp(1.7rem, 1.2rem + 2vw, 2.6rem); font-weight: 600; line-height: 1.08; }
+  .masthead p.sub { margin: 0; color: var(--muted); font-size: 1rem; max-width: 60ch; line-height: 1.5; }
+  .masthead .meta-row {
+    display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin-top: 0.4rem;
+    font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.78rem; color: var(--muted);
+  }
+  .masthead .meta-row b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Stepper ---------- */
+  .stepper { position: sticky; top: 0; z-index: 20; background: var(--bg); padding: 0.9rem 0 1.1rem; margin-bottom: 0.25rem; }
+  .stepper-track {
+    display: flex; align-items: center; gap: 0; margin: 0 auto; max-width: 960px; padding: 0 1.5rem;
+  }
+  .step-node { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; cursor: pointer; background: none; border: none; padding: 0; flex: 0 0 auto; font: inherit; color: inherit; }
+  .step-node .dot {
+    width: 2.1rem; height: 2.1rem; border-radius: 50%;
+    border: 2px solid var(--border); background: var(--surface);
+    display: flex; align-items: center; justify-content: center;
+    font-family: ui-monospace, monospace; font-size: 0.85rem; font-weight: 700; color: var(--muted);
+    transition: background-color .25s ease, border-color .25s ease, color .25s ease, transform .2s ease;
+  }
+  .step-node .label {
+    font-size: 0.68rem; letter-spacing: 0.03em; color: var(--muted); text-align: center; max-width: 6.4rem;
+    line-height: 1.2; display: none;
+  }
+  @media (min-width: 700px) { .step-node .label { display: block; } }
+  .step-node.active .dot { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); transform: scale(1.08); }
+  .step-node.active .label { color: var(--ink); font-weight: 700; }
+  .step-node.done .dot { border-color: var(--line); color: var(--line); }
+  .step-node:focus-visible .dot { outline: 2px solid var(--line); outline-offset: 2px; }
+  .step-connector { flex: 1 1 auto; height: 2px; background: var(--border); margin: 0 0.25rem; position: relative; top: -0.9rem; }
+  .step-connector.filled { background: var(--line); }
+
+  /* ---------- Panels ---------- */
+  .panel { display: none; }
+  .panel.active { display: block; animation: rise .38s ease both; }
+  @media (prefers-reduced-motion: reduce) { .panel.active { animation: none; } }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  .sheet {
+    position: relative;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 3px;
+    box-shadow: var(--shadow);
+    padding: 2rem 2rem 2.25rem;
+    margin-top: 1.25rem;
+  }
+  .sheet::before, .sheet::after,
+  .sheet .crop-br::before, .sheet .crop-br::after { content: ""; position: absolute; width: 14px; height: 14px; border: 2px solid var(--line); opacity: 0.55; }
+  .sheet::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  .sheet::after { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+
+  .sheet-kicker {
+    font-family: ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--line); font-weight: 700; margin-bottom: 0.5rem;
+  }
+  .sheet h2 { font-size: 1.55rem; font-weight: 600; margin-bottom: 0.35rem; }
+  .sheet .dek { color: var(--muted); font-size: 0.98rem; max-width: 68ch; line-height: 1.55; margin: 0.3rem 0 1.6rem; }
+
+  h3.block-title {
+    font-family: -apple-system, "Segoe UI", sans-serif; font-size: 0.78rem; letter-spacing: 0.07em; text-transform: uppercase;
+    font-weight: 700; color: var(--muted); margin: 2rem 0 0.75rem; padding-top: 1.4rem; border-top: 1px solid var(--border);
+  }
+  .sheet > h3.block-title:first-of-type { border-top: none; padding-top: 0; margin-top: 0.5rem; }
+
+  p { line-height: 1.62; margin: 0 0 0.9rem; color: var(--ink); }
+  p.small { font-size: 0.9rem; color: var(--muted); }
+  strong { font-weight: 700; }
+  ul.clean { margin: 0 0 0.9rem; padding-left: 1.2rem; line-height: 1.6; }
+  ul.clean li { margin-bottom: 0.45rem; }
+
+  /* ---------- Tables ---------- */
+  .table-scroll { overflow-x: auto; margin: 0.9rem 0 1.4rem; border: 1px solid var(--border); border-radius: 3px; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.88rem; }
+  thead th {
+    text-align: left; background: var(--surface-2); color: var(--muted);
+    font-family: ui-monospace, monospace; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 0.6rem 0.85rem; border-bottom: 1px solid var(--border); white-space: nowrap;
+  }
+  tbody td { padding: 0.55rem 0.85rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--surface-2) 45%, transparent); }
+  td.num, th.num { font-family: ui-monospace, monospace; font-variant-numeric: tabular-nums; text-align: right; }
+  td.hl { font-weight: 700; color: var(--accent); }
+
+  /* ---------- Data cover cards (step 0) ---------- */
+  .kv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.7rem; margin: 0.9rem 0 1.6rem; }
+  .kv-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 3px; padding: 0.75rem 0.9rem; }
+  .kv-card .k { font-family: ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+  .kv-card .v { font-family: ui-monospace, monospace; font-size: 1.15rem; font-weight: 700; margin-top: 0.15rem; }
+
+  /* ---------- Callouts ---------- */
+  .callout { border-radius: 3px; padding: 0.95rem 1.1rem; margin: 1.1rem 0; border: 1px solid; display: flex; gap: 0.7rem; }
+  .callout .ic { font-family: ui-monospace, monospace; font-weight: 700; font-size: 0.95rem; flex: 0 0 auto; }
+  .callout p { margin: 0; font-size: 0.92rem; }
+  .callout.bad { background: var(--bad-bg); border-color: var(--bad); color: var(--ink); }
+  .callout.bad .ic { color: var(--bad); }
+  .callout.warn { background: var(--warn-bg); border-color: var(--warn); }
+  .callout.warn .ic { color: var(--warn); }
+  .callout.good { background: var(--good-bg); border-color: var(--good); }
+  .callout.good .ic { color: var(--good); }
+
+  /* ---------- Funnel ---------- */
+  .funnel { display: flex; flex-direction: column; gap: 1.6rem; margin: 1rem 0 1.6rem; }
+  .funnel-chan { }
+  .funnel-chan .chan-label { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
+  .funnel-chan .chan-label .sw { width: 0.65rem; height: 0.65rem; border-radius: 2px; }
+  .funnel-chan .chan-label b { font-size: 0.95rem; }
+  .funnel-row { display: grid; grid-template-columns: 9.5rem 1fr 5.5rem; align-items: center; gap: 0.7rem; margin-bottom: 0.4rem; }
+  .funnel-row .stage-name { font-size: 0.8rem; color: var(--muted); text-align: right; }
+  .funnel-row .bar-track { background: var(--surface-2); border-radius: 2px; height: 1.5rem; position: relative; overflow: hidden; border: 1px solid var(--border); }
+  .funnel-row .bar-fill { height: 100%; border-radius: 2px 0 0 2px; min-width: 3px; transition: width .6s ease; }
+  .funnel-row .stage-val { font-family: ui-monospace, monospace; font-size: 0.82rem; text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* ---------- KPI grid ---------- */
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.85rem; margin: 1rem 0 1.6rem; }
+  .kpi-card { border: 1px solid var(--border); border-radius: 3px; padding: 0.9rem 1rem; background: var(--surface); }
+  .kpi-card .name { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.5rem; line-height: 1.3; }
+  .kpi-card .rowvals { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
+  .kpi-card .now { font-family: ui-monospace, monospace; font-size: 1.4rem; font-weight: 700; }
+  .kpi-card .target { font-family: ui-monospace, monospace; font-size: 0.78rem; color: var(--muted); }
+  .kpi-card .target b { color: var(--line); }
+  .kpi-card .bar { height: 5px; border-radius: 3px; background: var(--surface-2); margin-top: 0.55rem; overflow: hidden; }
+  .kpi-card .bar i { display: block; height: 100%; background: var(--line); }
+  .kpi-card.crit .now { color: var(--bad); }
+  .kpi-card.crit .bar i { background: var(--bad); }
+
+  /* ---------- Lead state flow ---------- */
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 1rem 0 1.5rem; }
+  .flow .pill { font-family: ui-monospace, monospace; font-size: 0.76rem; padding: 0.4rem 0.75rem; border-radius: 999px; border: 1px solid var(--border); background: var(--surface-2); white-space: nowrap; }
+  .flow .pill.win { border-color: var(--good); color: var(--good); background: var(--good-bg); }
+  .flow .pill.lose { border-color: var(--bad); color: var(--bad); background: var(--bad-bg); }
+  .flow .arrow { color: var(--muted); font-size: 0.9rem; }
+
+  /* ---------- A/B spec cards ---------- */
+  .ab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0 1.6rem; }
+  @media (max-width: 640px) { .ab-grid { grid-template-columns: 1fr; } }
+  .ab-card { border: 1px solid var(--border); border-radius: 3px; padding: 1rem 1.1rem; }
+  .ab-card.control { background: var(--surface-2); }
+  .ab-card.variant { background: color-mix(in srgb, var(--accent) 8%, var(--surface)); border-color: var(--accent); }
+  .ab-card .tag { font-family: ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; display: block; }
+  .ab-card.variant .tag { color: var(--accent); }
+  .ab-card p { font-size: 0.9rem; margin: 0; }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.8rem; margin: 1.4rem 0; }
+  .stat-box { text-align: center; border: 1px solid var(--border); border-radius: 3px; padding: 0.9rem 0.6rem; background: var(--surface-2); }
+  .stat-box .n { font-family: ui-monospace, monospace; font-size: 1.35rem; font-weight: 700; color: var(--line); }
+  .stat-box .l { font-size: 0.72rem; color: var(--muted); margin-top: 0.25rem; }
+
+  /* ---------- ICE table + impact bars ---------- */
+  .ice-rank { display: flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--line); color: var(--surface); font-family: ui-monospace, monospace; font-size: 0.78rem; font-weight: 700; }
+  .impact-compare { display: flex; flex-direction: column; gap: 1.1rem; margin: 1rem 0 1.5rem; }
+  .impact-chan .lbl { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.35rem; }
+  .impact-chan .lbl b { font-family: ui-monospace, monospace; }
+  .impact-bars { display: flex; flex-direction: column; gap: 0.3rem; }
+  .impact-bar-row { display: grid; grid-template-columns: 4.5rem 1fr 3.2rem; align-items: center; gap: 0.6rem; }
+  .impact-bar-row .t { font-size: 0.72rem; color: var(--muted); text-align: right; }
+  .impact-bar-row .track { background: var(--surface-2); border: 1px solid var(--border); border-radius: 2px; height: 1.1rem; overflow: hidden; }
+  .impact-bar-row .fill { height: 100%; }
+  .impact-bar-row .fill.base { background: var(--muted); }
+  .impact-bar-row .fill.proj { background: var(--good); }
+  .impact-bar-row .v { font-family: ui-monospace, monospace; font-size: 0.78rem; text-align: right; }
+
+  /* ---------- Nav buttons ---------- */
+  .nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: 1.6rem; gap: 1rem; }
+  button.navbtn {
+    font-family: ui-monospace, monospace; font-size: 0.82rem; letter-spacing: 0.02em;
+    padding: 0.65rem 1.15rem; border-radius: 3px; border: 1px solid var(--line); background: var(--surface);
+    color: var(--line); cursor: pointer; transition: background-color .15s ease, color .15s ease;
+  }
+  button.navbtn:hover { background: var(--line); color: var(--surface); }
+  button.navbtn:disabled { opacity: 0.35; cursor: not-allowed; background: var(--surface); color: var(--muted); border-color: var(--border); }
+  button.navbtn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  button.navbtn.primary:hover { filter: brightness(1.08); }
+  button.navbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .nav-count { font-family: ui-monospace, monospace; font-size: 0.78rem; color: var(--muted); }
+
+  footer.colophon { text-align: center; margin-top: 3rem; font-size: 0.76rem; color: var(--muted); font-family: ui-monospace, monospace; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <span class="eyebrow">Expediente Técnico · Vivienda Colsubsidio</span>
+    <h1>Conversión y Optimización Digital — Enero 2026</h1>
+    <p class="sub">Assessment de selección para Analista de Conversión y Optimización Digital. Lectura del funnel de captación de leads (Landing + WhatsApp), diseño de control de venta y plan de mejora.</p>
+    <div class="meta-row">
+      <span>Periodo: <b>Enero 2026</b></span>
+      <span>Canales: <b>WhatsApp · Landing</b></span>
+      <span>Meta WhatsApp 2026: <b>600 ventas</b> (~50/mes)</span>
+    </div>
+  </div>
+
+  <nav class="stepper" aria-label="Pasos del análisis">
+    <div class="stepper-track" id="stepperTrack"></div>
+  </nav>
+
+  <!-- STEP 0 -->
+  <section class="panel" data-step="0">
+    <div class="sheet"><div class="crop-br"></div>
+      <span class="sheet-kicker">00 · El problema</span>
+      <h2>El ecosistema y los datos crudos</h2>
+      <p class="dek">Antes de cualquier análisis: así opera hoy el funnel, y estos son los volúmenes de enero 2026 tal como llegan de la operación. Las tasas de conversión no vienen calculadas — es el primer trabajo del análisis.</p>
+
+      <h3 class="block-title">Cómo se genera y gestiona un lead</h3>
+      <p>Vivienda Colsubsidio capta demanda por dos activos: una <strong>landing de proyectos</strong> con formulario de contacto, y un <strong>canal WhatsApp</strong> comercial con bot de autogestión que desborda a un asesor humano cuando la conversación lo requiere. Todo lead generado sigue el mismo camino: <strong>contactado → agendado (cita comercial) → vendido</strong>.</p>
+
+      <h3 class="block-title">Canal WhatsApp — volúmenes enero 2026</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Etapa del flujo</th><th class="num">Volumen</th></tr></thead>
+          <tbody>
+            <tr><td>Conversaciones entrantes al bot</td><td class="num">8.200</td></tr>
+            <tr><td>Resueltas en autogestión (sin asesor)</td><td class="num">2.700</td></tr>
+            <tr><td>Desbordadas a asesor (= leads recibidos)</td><td class="num">5.500</td></tr>
+            <tr><td>Leads contactados</td><td class="num">2.900</td></tr>
+            <tr><td>Agendamientos (citas)</td><td class="num">607</td></tr>
+            <tr><td>Ventas</td><td class="num hl">13</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="block-title">Canal Landing — volúmenes enero 2026</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Etapa del flujo</th><th class="num">Volumen</th></tr></thead>
+          <tbody>
+            <tr><td>Sesiones en la landing</td><td class="num">48.000</td></tr>
+            <tr><td>Formularios iniciados</td><td class="num">3.200</td></tr>
+            <tr><td>Formularios completados (leads)</td><td class="num">1.850</td></tr>
+            <tr><td>Leads contactados</td><td class="num">1.200</td></tr>
+            <tr><td>Agendamientos (citas)</td><td class="num">210</td></tr>
+            <tr><td>Ventas</td><td class="num hl">8</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="block-title">Tipificación de "no agendamiento"</h3>
+      <p class="small">Sobre los leads contactados que no agendaron.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Motivo</th><th class="num">Participación</th></tr></thead>
+          <tbody>
+            <tr><td>Reportado en centrales de riesgo</td><td class="num">39%</td></tr>
+            <tr><td>Desiste por ubicación</td><td class="num">21%</td></tr>
+            <tr><td>Desiste por precio</td><td class="num">14%</td></tr>
+            <tr><td>Compra en otro proyecto</td><td class="num">7%</td></tr>
+            <tr><td>Otros / sin tipificar</td><td class="num">19%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="block-title">Datos operativos (ambos canales)</h3>
+      <div class="kv-grid">
+        <div class="kv-card"><div class="k">1er contacto · WhatsApp</div><div class="v">8h 20m</div></div>
+        <div class="kv-card"><div class="k">1er contacto · Landing</div><div class="v">26h</div></div>
+        <div class="kv-card"><div class="k">Leads sin gestionar · WhatsApp</div><div class="v">47%</div></div>
+        <div class="kv-card"><div class="k">Citas con tipificación registrada</div><div class="v">62%</div></div>
+      </div>
+
+      <div class="callout warn">
+        <span class="ic">i</span>
+        <p>Se entregan los volúmenes crudos de forma intencional. El objetivo del assessment es leer estos datos, calcular las tasas de conversión, encontrar las fugas y proponer un plan — eso es lo que se desarrolla en los siguientes cuatro pasos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 1 -->
+  <section class="panel" data-step="1">
+    <div class="sheet"><div class="crop-br"></div>
+      <span class="sheet-kicker">01 · Diagnóstico</span>
+      <h2>Tasas de conversión y puntos de fuga</h2>
+      <p class="dek">Funnel de enero 2026, a escala real. Cada barra representa el volumen relativo a la primera etapa del canal.</p>
+
+      <div class="funnel">
+        <div class="funnel-chan">
+          <div class="chan-label"><span class="sw" style="background:var(--line)"></span><b>WhatsApp</b></div>
+          <div class="funnel-row"><span class="stage-name">Conversaciones</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--line)"></div></div><span class="stage-val num">8.200</span></div>
+          <div class="funnel-row"><span class="stage-name">Leads (desbordados)</span><div class="bar-track"><div class="bar-fill" style="width:67.1%;background:var(--line)"></div></div><span class="stage-val num">5.500</span></div>
+          <div class="funnel-row"><span class="stage-name">Contactados</span><div class="bar-track"><div class="bar-fill" style="width:35.4%;background:var(--line)"></div></div><span class="stage-val num">2.900</span></div>
+          <div class="funnel-row"><span class="stage-name">Agendados</span><div class="bar-track"><div class="bar-fill" style="width:7.4%;background:var(--line)"></div></div><span class="stage-val num">607</span></div>
+          <div class="funnel-row"><span class="stage-name">Ventas</span><div class="bar-track"><div class="bar-fill" style="width:0.5%;background:var(--bad)"></div></div><span class="stage-val num hl">13</span></div>
+        </div>
+        <div class="funnel-chan">
+          <div class="chan-label"><span class="sw" style="background:var(--accent)"></span><b>Landing</b></div>
+          <div class="funnel-row"><span class="stage-name">Sesiones</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--accent)"></div></div><span class="stage-val num">48.000</span></div>
+          <div class="funnel-row"><span class="stage-name">Formularios iniciados</span><div class="bar-track"><div class="bar-fill" style="width:6.7%;background:var(--accent)"></div></div><span class="stage-val num">3.200</span></div>
+          <div class="funnel-row"><span class="stage-name">Leads (completados)</span><div class="bar-track"><div class="bar-fill" style="width:3.9%;background:var(--accent)"></div></div><span class="stage-val num">1.850</span></div>
+          <div class="funnel-row"><span class="stage-name">Contactados</span><div class="bar-track"><div class="bar-fill" style="width:2.5%;background:var(--accent)"></div></div><span class="stage-val num">1.200</span></div>
+          <div class="funnel-row"><span class="stage-name">Agendados</span><div class="bar-track"><div class="bar-fill" style="width:0.5%;background:var(--accent)"></div></div><span class="stage-val num">210</span></div>
+          <div class="funnel-row"><span class="stage-name">Ventas</span><div class="bar-track"><div class="bar-fill" style="width:0.3%;background:var(--bad)"></div></div><span class="stage-val num hl">8</span></div>
+        </div>
+      </div>
+
+      <h3 class="block-title">Tasas etapa a etapa</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Transición</th><th class="num">WhatsApp</th><th class="num">Landing</th></tr></thead>
+          <tbody>
+            <tr><td>Autogestión / Sesión→Iniciado</td><td class="num">32,9%</td><td class="num">6,7%</td></tr>
+            <tr><td>→ Contactado</td><td class="num">52,7%</td><td class="num">64,9%</td></tr>
+            <tr><td>Contactado → Agenda</td><td class="num">20,9%</td><td class="num">17,5%</td></tr>
+            <tr><td>Agenda → Venta</td><td class="num hl">2,1%</td><td class="num hl">3,8%</td></tr>
+            <tr><td>Venta / Lead</td><td class="num">0,24%</td><td class="num">0,43%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="block-title">Los 3 puntos de mayor fuga</h3>
+      <div class="callout bad">
+        <span class="ic">01</span>
+        <p><b>Agenda → Venta, la fuga más cara del negocio.</b> WhatsApp cierra solo 2,1% de sus citas (607→13) y Landing 3,8% (210→8), muy por debajo del 10-15% esperable en vivienda. Se pierden 594 citas de WhatsApp y 202 de Landing sin convertir.</p>
+      </div>
+      <div class="callout bad">
+        <span class="ic">02</span>
+        <p><b>47% de leads de WhatsApp nunca se gestionan</b> (2.600 de 5.500). Explica la contactación de solo 52,7% pese a un tiempo de primer contacto rápido (8h20) — es un problema de cobertura/capacidad, no de velocidad, y 100% accionable por el equipo digital.</p>
+      </div>
+      <div class="callout bad">
+        <span class="ic">03</span>
+        <p><b>93,3% de las sesiones de Landing no inician formulario</b> (44.800 de 48.000), y de los que inician, 42,2% abandona sin completar (1.350 de 3.200). La mayor fuga en volumen absoluto del funnel.</p>
+      </div>
+
+      <h3 class="block-title">Qué frena la conversión — y qué es accionable</h3>
+      <ul class="clean">
+        <li><strong>39% centrales de riesgo</strong> — no accionable por digital; restricción de política de crédito aguas arriba.</li>
+        <li><strong>21% ubicación + 14% precio (35%)</strong> — desajuste oferta/expectativa. Sí accionable: mejor segmentación de pauta y calificación temprana en el bot.</li>
+        <li><strong>19% sin tipificar + solo 62% de tipificación registrada</strong> — problema de calidad de dato que oculta el diagnóstico real; se cierra con disciplina de CRM.</li>
+        <li><strong>SLA de contacto:</strong> WhatsApp responde más rápido (8h20) pero cubre menos (52,7%); Landing responde más lento (26h) pero cubre más (64,9%) por menor volumen. El cuello de botella de WhatsApp es capacidad, no velocidad.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="panel" data-step="2">
+    <div class="sheet"><div class="crop-br"></div>
+      <span class="sheet-kicker">02 · Control</span>
+      <h2>KPIs y esquema de control de la venta</h2>
+      <p class="dek">Un indicador norte, los indicadores por etapa, y cómo se sigue el lead hasta que se convierte en venta.</p>
+
+      <div class="callout good">
+        <span class="ic">★</span>
+        <p><b>KPI Norte: Tasa de conversión Lead → Venta</b>, por canal, medida mensual contra meta. Meta propuesta para Landing (hoy sin meta formal): ~18-20 ventas/mes, con 1.850 leads/mes y venta/lead objetivo ~1%.</p>
+      </div>
+
+      <h3 class="block-title">KPIs por etapa — hoy vs. meta</h3>
+      <div class="kpi-grid">
+        <div class="kpi-card crit"><div class="name">% leads sin gestionar (WhatsApp)</div><div class="rowvals"><span class="now">47%</span><span class="target">meta <b>&lt;15%</b></span></div><div class="bar"><i style="width:32%"></i></div></div>
+        <div class="kpi-card"><div class="name">Tasa de autogestión (bot)</div><div class="rowvals"><span class="now">32,9%</span><span class="target">meta <b>≥35%</b></span></div><div class="bar"><i style="width:94%"></i></div></div>
+        <div class="kpi-card"><div class="name">Contactación WhatsApp</div><div class="rowvals"><span class="now">52,7%</span><span class="target">meta <b>≥70%</b></span></div><div class="bar"><i style="width:75%"></i></div></div>
+        <div class="kpi-card"><div class="name">Contactación Landing</div><div class="rowvals"><span class="now">64,9%</span><span class="target">meta <b>≥75%</b></span></div><div class="bar"><i style="width:87%"></i></div></div>
+        <div class="kpi-card"><div class="name">Contactado→Agenda WhatsApp</div><div class="rowvals"><span class="now">20,9%</span><span class="target">meta <b>≥25%</b></span></div><div class="bar"><i style="width:84%"></i></div></div>
+        <div class="kpi-card"><div class="name">Contactado→Agenda Landing</div><div class="rowvals"><span class="now">17,5%</span><span class="target">meta <b>≥25%</b></span></div><div class="bar"><i style="width:70%"></i></div></div>
+        <div class="kpi-card crit"><div class="name">Tasa de cierre WhatsApp</div><div class="rowvals"><span class="now">2,1%</span><span class="target">meta <b>≥10%</b></span></div><div class="bar"><i style="width:21%"></i></div></div>
+        <div class="kpi-card crit"><div class="name">Tasa de cierre Landing</div><div class="rowvals"><span class="now">3,8%</span><span class="target">meta <b>≥10%</b></span></div><div class="bar"><i style="width:38%"></i></div></div>
+        <div class="kpi-card"><div class="name">Tipificación completa</div><div class="rowvals"><span class="now">62%</span><span class="target">meta <b>≥90%</b></span></div><div class="bar"><i style="width:69%"></i></div></div>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>KPI</th><th>Fórmula</th><th>Frecuencia</th><th>Fuente</th></tr></thead>
+          <tbody>
+            <tr><td>SLA de primer contacto</td><td>% contactados dentro de ventana objetivo</td><td>Diaria</td><td>CRM / timestamps</td></tr>
+            <tr><td>Tasa de asistencia a cita</td><td>Citas asistidas / Citas agendadas</td><td>Semanal</td><td>Agenda comercial</td></tr>
+            <tr><td>CPL</td><td>Inversión en medios / Leads generados</td><td>Mensual</td><td>Ads Manager</td></tr>
+            <tr><td>CPA</td><td>Inversión en medios / Ventas</td><td>Mensual</td><td>Pauta + CRM</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="block-title">Estados del lead (una sola máquina de estados, ambos canales)</h3>
+      <div class="flow">
+        <span class="pill">Nuevo</span><span class="arrow">→</span>
+        <span class="pill">En gestión</span><span class="arrow">→</span>
+        <span class="pill">Contactado</span><span class="arrow">→</span>
+        <span class="pill">Agendado</span><span class="arrow">→</span>
+        <span class="pill">Cita realizada</span><span class="arrow">→</span>
+        <span class="pill">En negociación</span><span class="arrow">→</span>
+        <span class="pill win">Ganado</span><span class="arrow">/</span><span class="pill lose">Perdido</span>
+      </div>
+      <p class="small">Cada cambio de estado queda con timestamp y responsable — es la base de las alertas y de todos los KPIs de tiempo.</p>
+
+      <h3 class="block-title">Control operativo</h3>
+      <ul class="clean">
+        <li><strong>Alertas de SLA:</strong> lead &gt;2h (WhatsApp) o &gt;12h (Landing) en "Nuevo" sin pasar a gestión → escalamiento automático. Reporte diario de leads huérfanos.</li>
+        <li><strong>Alerta de cita:</strong> sin confirmar 24h antes; sin tipificación 48h después de realizada.</li>
+        <li><strong>Atribución UTM:</strong> source/medium/campaign capturado en el punto de entrada (formulario o click-to-chat) y persistido en el lead hasta la venta — first-touch para comparar canales, último touch pre-agenda para medio-funnel.</li>
+        <li><strong>Tablero:</strong> vista ejecutiva mensual (ventas vs. meta), vista de funnel semanal, vista operativa diaria (SLA, cola, alertas), vista de calidad de dato semanal.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="panel" data-step="3">
+    <div class="sheet"><div class="crop-br"></div>
+      <span class="sheet-kicker">03 · Experimento</span>
+      <h2>Prueba A/B — leads de WhatsApp sin gestionar</h2>
+      <p class="dek">Se ataca la fuga #2 del diagnóstico: 47% de leads que nunca reciben contacto humano. Es la palanca de mayor confianza y facilidad de las identificadas — 100% controlable por el equipo digital.</p>
+
+      <div class="callout warn">
+        <span class="ic">H</span>
+        <p><b>Hipótesis:</b> si el bot envía un mensaje de seguimiento automático con auto-agendamiento a los leads desbordados sin contacto humano en 2h, aumentará la tasa de agendamiento sin necesitar más capacidad de asesores, porque se reduce la pérdida de leads huérfanos en cola.</p>
+      </div>
+
+      <div class="ab-grid">
+        <div class="ab-card control"><span class="tag">Control · A</span><p>Flujo actual: el lead espera en cola hasta que un asesor lo contacta, sin límite de tiempo.</p></div>
+        <div class="ab-card variant"><span class="tag">Variante · B</span><p>A las 2h sin contacto humano, el bot envía mensaje automático + link de auto-agendamiento directo.</p></div>
+      </div>
+
+      <h3 class="block-title">Parámetros del experimento</h3>
+      <div class="stat-row">
+        <div class="stat-box"><div class="n">11,0%</div><div class="l">Línea base agendamiento</div></div>
+        <div class="stat-box"><div class="n">≥14,0%</div><div class="l">Meta de agendamiento (B)</div></div>
+        <div class="stat-box"><div class="n">~1.900</div><div class="l">Leads por grupo</div></div>
+        <div class="stat-box"><div class="n">3–4 sem.</div><div class="l">Duración estimada</div></div>
+      </div>
+
+      <h3 class="block-title">Métrica y criterio de decisión</h3>
+      <p><strong>Métrica primaria:</strong> tasa de agendamiento sobre leads recibidos. <strong>Guardrails:</strong> % sin gestionar a 48h, tasa de asistencia, tasa de cierre.</p>
+      <p><strong>Decisión:</strong> B gana con +3pp o más sobre el 11,0% base, significancia del 95% (test de dos proporciones, una cola), sin caer la asistencia a cita más de 5pp frente al control.</p>
+
+      <h3 class="block-title">Riesgos y sesgos</h3>
+      <ul class="clean">
+        <li>Contaminación entre grupos si el mismo asesor atiende ambos — mitigar con asignación aleatoria a nivel de lead dentro del bot.</li>
+        <li>Estacionalidad: enero puede no generalizar a otros meses.</li>
+        <li>Auto-agendamiento sin filtro podría inflar citas de baja calidad — de ahí los guardrails de asistencia y cierre.</li>
+        <li>Con solo 13 ventas/mes en la base, la tasa de cierre no alcanzará significancia en 4 semanas — se trata como exploratoria.</li>
+        <li>Saturar agenda comercial sin más capacidad puede bajar asistencia/cierre — monitorear capacidad en paralelo.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="panel" data-step="4">
+    <div class="sheet"><div class="crop-br"></div>
+      <span class="sheet-kicker">04 · Plan de acción</span>
+      <h2>Iniciativas priorizadas e impacto esperado</h2>
+      <p class="dek">Cuatro iniciativas, dos por canal, priorizadas con un modelo ICE explícito (Impact / Confidence / Ease) y su efecto proyectado sobre el funnel de enero.</p>
+
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th></th><th>Iniciativa</th><th class="num">Impact</th><th class="num">Confidence</th><th class="num">Ease</th><th class="num">ICE</th></tr></thead>
+          <tbody>
+            <tr><td><span class="ice-rank">1</span></td><td><b>A</b> · WhatsApp — auto-seguimiento a leads sin gestionar</td><td class="num">8</td><td class="num">8</td><td class="num">8</td><td class="num hl">8,0</td></tr>
+            <tr><td><span class="ice-rank">2</span></td><td><b>C</b> · Landing — formulario corto</td><td class="num">5</td><td class="num">7</td><td class="num">8</td><td class="num hl">6,7</td></tr>
+            <tr><td><span class="ice-rank">3</span></td><td><b>B</b> · WhatsApp — optimizar cierre agenda→venta</td><td class="num">9</td><td class="num">5</td><td class="num">5</td><td class="num hl">6,3</td></tr>
+            <tr><td><span class="ice-rank">4</span></td><td><b>D</b> · Landing — CRO de la página (top funnel)</td><td class="num">6</td><td class="num">5</td><td class="num">6</td><td class="num hl">5,7</td></tr>
+            <tr><td><span class="ice-rank" style="background:var(--muted)">5</span></td><td><b>E</b> · Ambos — prefiltro de riesgo + tipificación (bonus)</td><td class="num">4</td><td class="num">6</td><td class="num">4</td><td class="num">4,7</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small">A queda primero por su alta confianza y facilidad (ya diseñada como A/B en el paso 3). B tiene el mayor impacto potencial pero depende del equipo comercial, de ahí su menor confianza.</p>
+
+      <h3 class="block-title">Impacto proyectado en ventas/mes</h3>
+      <div class="impact-compare">
+        <div class="impact-chan">
+          <div class="lbl"><span>WhatsApp — con A + B</span><b class="num">13 → ~34</b></div>
+          <div class="impact-bars">
+            <div class="impact-bar-row"><span class="t">Actual</span><div class="track"><div class="fill base" style="width:27%"></div></div><span class="v num">13</span></div>
+            <div class="impact-bar-row"><span class="t">Proyectado</span><div class="track"><div class="fill proj" style="width:68%"></div></div><span class="v num">34</span></div>
+            <div class="impact-bar-row"><span class="t">Meta</span><div class="track"><div class="fill" style="width:100%;background:var(--border)"></div></div><span class="v num">50</span></div>
+          </div>
+        </div>
+        <div class="impact-chan">
+          <div class="lbl"><span>Landing — con C + D</span><b class="num">8 → ~14</b></div>
+          <div class="impact-bars">
+            <div class="impact-bar-row"><span class="t">Actual</span><div class="track"><div class="fill base" style="width:40%"></div></div><span class="v num">8</span></div>
+            <div class="impact-bar-row"><span class="t">Proyectado</span><div class="track"><div class="fill proj" style="width:70%"></div></div><span class="v num">14</span></div>
+            <div class="impact-bar-row"><span class="t">Meta propuesta</span><div class="track"><div class="fill" style="width:100%;background:var(--border)"></div></div><span class="v num">18-20</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout bad">
+        <span class="ic">!</span>
+        <p><b>Lectura honesta:</b> A+B llevan WhatsApp de 13 a ~34 ventas/mes (2,6x) — pero no cierran la meta de 50/mes solo optimizando conversión sobre los 5.500 leads actuales. Cerrar el 100% de la brecha exige sumar una palanca de <strong>volumen</strong> (más pauta, más conversaciones entrantes), no solo de conversión.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="nav-row">
+    <button class="navbtn" id="prevBtn" type="button">&larr; Anterior</button>
+    <span class="nav-count" id="navCount"></span>
+    <button class="navbtn primary" id="nextBtn" type="button">Siguiente &rarr;</button>
+  </div>
+
+  <footer class="colophon">Vivienda Colsubsidio · Assessment Analista de Conversión y Optimización Digital · Enero 2026</footer>
+</div>
+
+<script>
+  (function () {
+    var steps = [
+      { label: "El problema" },
+      { label: "Diagnóstico" },
+      { label: "KPIs & Control" },
+      { label: "Prueba A/B" },
+      { label: "Plan de acción" }
+    ];
+    var current = 0;
+    var track = document.getElementById("stepperTrack");
+    var panels = Array.prototype.slice.call(document.querySelectorAll(".panel"));
+    var prevBtn = document.getElementById("prevBtn");
+    var nextBtn = document.getElementById("nextBtn");
+    var navCount = document.getElementById("navCount");
+
+    steps.forEach(function (s, i) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "step-node";
+      btn.setAttribute("aria-label", "Paso " + i + ": " + s.label);
+      btn.innerHTML = '<span class="dot">' + i + '</span><span class="label">' + s.label + '</span>';
+      btn.addEventListener("click", function () { goTo(i); });
+      track.appendChild(btn);
+      if (i < steps.length - 1) {
+        var conn = document.createElement("div");
+        conn.className = "step-connector";
+        track.appendChild(conn);
+      }
+    });
+
+    function render() {
+      panels.forEach(function (p) {
+        p.classList.toggle("active", Number(p.getAttribute("data-step")) === current);
+      });
+      var nodes = track.querySelectorAll(".step-node");
+      var conns = track.querySelectorAll(".step-connector");
+      nodes.forEach(function (n, i) {
+        n.classList.toggle("active", i === current);
+        n.classList.toggle("done", i < current);
+      });
+      conns.forEach(function (c, i) {
+        c.classList.toggle("filled", i < current);
+      });
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === steps.length - 1;
+      nextBtn.textContent = current === steps.length - 1 ? "Fin ✓" : "Siguiente →";
+      navCount.textContent = "Paso " + current + " de " + (steps.length - 1) + " — " + steps[current].label;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function goTo(i) {
+      current = Math.max(0, Math.min(steps.length - 1, i));
+      render();
+    }
+
+    prevBtn.addEventListener("click", function () { goTo(current - 1); });
+    nextBtn.addEventListener("click", function () { goTo(current + 1); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") goTo(current + 1);
+      if (e.key === "ArrowLeft") goTo(current - 1);
+    });
+
+    render();
+  })();
+</script>
+</body>
+</html>
