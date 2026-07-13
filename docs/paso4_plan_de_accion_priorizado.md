@@ -37,3 +37,14 @@ Meta combinada de referencia: 50/mes WhatsApp + 15/mes Landing = **65/mes**.
 El plan completo proyecta pasar de 21 a **~33 ventas/mes combinadas (2,5x)** en 2-3 meses — una mejora sustancial, pero todavía lejos de la meta combinada de 65/mes. Cerrar esa brecha adicional exige, más allá de estas 5 iniciativas de conversión, sostener una palanca de **volumen** (más inversión en pauta, más conversaciones entrantes) en el tiempo — es una limitación real del funnel actual que vale la pena señalar explícitamente en vez de prometer una cifra que los datos no sostienen.
 
 El cumplimiento de la meta combinada pasaría de **32% (21/65) a ~51% (33/65)** — el salto más grande y de mayor certeza del plan viene de las dos primeras iniciativas, ambas centradas en cerrar la ventana de contacto.
+
+## En resumen
+
+El problema no es la demanda del proyecto — es el seguimiento del lead una vez que llega.
+
+- **26% de cumplimiento de meta en WhatsApp** (13 de ~50 ventas/mes) — el punto de partida real de este análisis.
+- **47% de los leads de WhatsApp nunca se contactan** — la fuga de mayor costo, ≈11 ventas/mes potenciales perdidas, y 100% accionable por el equipo digital.
+- **98% de las citas agendadas no cierran** — la fuga de mayor gravedad relativa, aunque depende más del proceso comercial que del digital.
+- Con datos, control operativo y experimentación (A/B), el plan proyecta pasar de **21 a ~33 ventas/mes combinadas** en 2-3 meses — de 32% a ~51% de cumplimiento de la meta combinada.
+
+El siguiente paso no es más análisis — es instrumentar el control del lead (Paso 2) y correr el primer experimento (Paso 3) para empezar a capturar esas ≈11 ventas/mes ya identificadas.
