@@ -86,3 +86,69 @@ No hay ningún punto del enunciado sin responder. Lo único que podrías conside
 ────────────────────────────────────────────────────────────────────────────────────────────────────────
   ⏵⏵ accept edits on · 1 shell                                                                      /rc
   ⧉  informe_artifac
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ de cual meta me esta hablando: "El plan completo proyecta pasar de 21 a ~33 ventas/mes combinadas (2,5x)
+  en 2-3 meses — una mejora sustancial, pero todavía lejos de la meta combinada de 65/mes (50 WhatsApp +
+  15 Landing)."
+────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Se refiere a la suma de las dos metas mensuales que se establecen en el documento (Paso 02 · "KPI Norte"):
+
+- 50 ventas/mes en WhatsApp — esta es la meta que da el propio enunciado del caso (600 ventas/año ÷ 12
+  meses ≈ 50/mes). No la inventamos, viene dada.
+- 15 ventas/mes en Landing — esta la propone el documento. El enunciado dice explícitamente que Landing
+  no tiene meta formal ("parte del reto es proponerla"), así que el análisis fija ~15/mes (180/año) como
+  meta de arranque conservadora, basada en duplicar la tasa actual de venta/lead.
+
+50 + 15 = 65 ventas/mes combinadas — esa es la "meta combinada" contra la que se mide el 32% → ~51% de
+cumplimiento proyectado.
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ pero como asi no cumplimos?
+────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Es matemático, no un fallo del plan:
+
+- Hoy: 21 ventas/mes combinadas (13 WhatsApp + 8 Landing)
+- Meta: 65/mes (50 + 15)
+- Brecha total: 44 ventas/mes
+- Lo que aporta el plan de 5 iniciativas: +11,7 ventas/mes
+- Resultado proyectado: 21 + 11,7 ≈ 33/mes
+- Lo que sigue faltando: 65 − 33 = 32 ventas/mes
+
+Por qué no cierra el 100%: las 5 iniciativas atacan CONVERSIÓN (mejorar el % de los leads que ya existen
+hoy que terminan en venta), no VOLUMEN (más conversaciones de WhatsApp, más sesiones en Landing). Con el
+volumen actual (5.500 leads WhatsApp + 1.850 leads Landing), incluso convirtiendo perfectamente todo lo
+que entra, hay un techo matemático a cuántas ventas se pueden generar.
+
+Para los 32 restantes solo hay dos palancas posibles, y el plan solo mueve una:
+1. Conversión (lo que ya cubre el plan) — mejorar el % de cierre sobre los leads actuales.
+2. Volumen (lo que falta) — meter más leads al funnel: más inversión en pauta, más conversaciones
+   entrantes, más sesiones en Landing.
+
+Punto para la entrevista: esto es una fortaleza del análisis, no una debilidad — muestra que entiendes la
+diferencia entre optimizar lo que existe (tu rol) vs. generar más demanda (marketing/pauta, otro equipo),
+y que no le prometes al panel algo que los números no sostienen.
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ pero parce esto es malisimo: "2. El cumplimiento de meta hoy es bajo: 26%. WhatsApp cerró enero con 13
+  ventas de una meta de ~50/mes."
+────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+No hay nada malo en incluirlo — es exactamente lo que el caso pide mostrar.
+
+Ese 26% no es un reflejo del trabajo del candidato — es el dato de negocio que Colsubsidio entregó. El
+enunciado original literalmente dice: "recuerda: enero cerró en 13 ventas vs. ~50/mes requeridas en
+WhatsApp" — piden explícitamente usar esa cifra como punto de partida del diagnóstico. No se inventó,
+se cita.
+
+Un diagnóstico que "suaviza" el número real sería la señal mala, no al revés. Si un analista entrega un
+informe que evita decir "solo estamos al 26% de la meta" porque suena feo, eso es lo que un evaluador
+senior penaliza — parece que no puede con las malas noticias, o que no entendió la gravedad del problema.
+Mostrar el 26% de frente, con la cifra exacta, es lo que demuestra rigor.
+
+Y el documento no se queda ahí: ese 26% es el punto 2 de 5 en "En resumen", seguido inmediatamente por el
+diagnóstico de por qué (los 3 fugas) y el plan que lo mejora a ~51%. La estructura completa es: "así de
+mal estamos → esto es lo que lo explica → esto es lo que hacemos al respecto". Eso es justo lo que se
+espera de un análisis serio, no una debilidad.
