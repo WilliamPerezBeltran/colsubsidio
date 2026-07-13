@@ -105,6 +105,22 @@
   }
   .masthead .meta-row b { color: var(--ink); font-weight: 600; }
 
+  .presenter-row {
+    display: flex; align-items: center; gap: 0.85rem; margin-top: 0.3rem;
+  }
+  .presenter-row img {
+    width: 3.4rem; height: 3.4rem; border-radius: 50%; object-fit: cover;
+    border: 2px solid var(--line); flex: 0 0 auto;
+  }
+  .presenter-row .who b { font-size: 1rem; color: var(--ink); }
+  .presenter-row .who .role { font-size: 0.9rem; color: var(--line); font-weight: 600; }
+  .presenter-row .who .cred {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.74rem;
+    color: var(--muted); margin-top: 0.15rem;
+  }
+  @media print { .presenter-row { display: none !important; } }
+  body.print-mode .presenter-row { display: none !important; }
+
   /* ---------- Progress bar ---------- */
   .progress-track { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
   .progress-track .rail { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
@@ -337,6 +353,13 @@
   <div class="masthead">
     <span class="eyebrow">Expediente Técnico · Vivienda Colsubsidio</span>
     <h1>Conversión y Optimización Digital</h1>
+    <div class="presenter-row">
+      <img src="william.jpeg" alt="William Fernando Pérez Beltrán" />
+      <div class="who">
+        <div><b>William Fernando Pérez Beltrán</b> — <span class="role">candidato a Analista de Conversión y Optimización Digital</span></div>
+        <div class="cred">Ingeniero Industrial · 10 años de experiencia en desarrollo de software · perfil comercial y de producto</div>
+      </div>
+    </div>
     <div class="meta-row">
       <span>Periodo: <b>Enero 2026</b></span>
       <span>Canales: <b>WhatsApp · Landing</b></span>
