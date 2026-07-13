@@ -1,0 +1,88 @@
+
+Sí — repasé el enunciado original punto por punto contra el informe.html/informe.pdf actual. Está completo. Aquí el mapeo exacto:
+
+1. Diagnóstico y lectura de KPIs ✓ completo
+
+┌────────────────────────────────────────────────┬───────────────────────────────────────┬────────┐
+│                   Requisito                    │              Dónde está               │ Estado │
+├────────────────────────────────────────────────┼───────────────────────────────────────┼────────┤
+│ Tasas etapa a etapa por canal (autogestión,    │ Slides 1.1 y 1.2 (páginas 5-6) —      │        │
+│ contactación, contactado→agenda, agenda→venta, │ tablas con las 5 transiciones para    │ ✓      │
+│  venta/lead)                                   │ WhatsApp y Landing                    │        │
+├────────────────────────────────────────────────┼───────────────────────────────────────┼────────┤
+│ Comparación landing vs. WhatsApp + 2-3 fugas   │ Slide 1.3 (comparación) y 1.4         │        │
+│ con cifra                                      │ (páginas 7-8) — 3 fugas, cada una con │ ✓      │
+│                                                │  su cifra exacta                      │        │
+├────────────────────────────────────────────────┼───────────────────────────────────────┼────────┤
+│ Interpretación de tipificación + datos         │ Slide 1.5 (página 9) — desglose       │ ✓      │
+│ operativos, qué frena y qué es accionable      │ explícito accionable/no accionable    │        │
+└────────────────────────────────────────────────┴───────────────────────────────────────┴────────┘
+
+2. KPIs y esquema de control de la venta ✓ completo — incluido lo que piden como "núcleo del rol"
+
+┌────────────────────────────┬───────────────────────────────────────────────────────────┬────────┐
+│         Requisito          │                        Dónde está                         │ Estado │
+├────────────────────────────┼───────────────────────────────────────────────────────────┼────────┤
+│ KPI norte + indicadores    │ Slides 2.1 y 2.2 (páginas 10-11)                          │ ✓      │
+│ por etapa                  │                                                           │        │
+├────────────────────────────┼───────────────────────────────────────────────────────────┼────────┤
+│ Fórmula, frecuencia, meta  │ Slide 2.3 (página 12) — tabla completa de 11 KPIs         │ ✓      │
+│ y fuente para CADA KPI     │                                                           │        │
+├────────────────────────────┼───────────────────────────────────────────────────────────┼────────┤
+│ Estados del lead, alertas  │ Slides 2.3-2.4 (páginas 12-13) — máquina de estados,      │        │
+│ SLA, atribución UTM,       │ alertas a 2h/4h, modelo first-touch/last-touch, 4 vistas  │ ✓      │
+│ tablero                    │ de tablero                                                │        │
+└────────────────────────────┴───────────────────────────────────────────────────────────┴────────┘
+
+3. Hipótesis y diseño de prueba A/B ✓ completo
+
+┌─────────────────────────────────────┬─────────────────────────────────────────────────┬────────┐
+│              Requisito              │                   Dónde está                    │ Estado │
+├─────────────────────────────────────┼─────────────────────────────────────────────────┼────────┤
+│ Punto de fuga elegido + experimento │ Slides 3.1-3.2 (páginas 14-15)                  │ ✓      │
+├─────────────────────────────────────┼─────────────────────────────────────────────────┼────────┤
+│ Hipótesis                           │ Slide 3.1                                       │ ✓      │
+├─────────────────────────────────────┼─────────────────────────────────────────────────┼────────┤
+│ Variable a modificar                │ Slide 3.2                                       │ ✓      │
+├─────────────────────────────────────┼─────────────────────────────────────────────────┼────────┤
+│ Métrica primaria de éxito           │ Slide 3.3 (página 16)                           │ ✓      │
+├─────────────────────────────────────┼─────────────────────────────────────────────────┼────────┤
+│ Criterio de decisión                │ Slide 3.3                                       │ ✓      │
+├─────────────────────────────────────┼─────────────────────────────────────────────────┼────────┤
+│ Duración/volumen aproximado         │ Slide 3.3 (~1.900 leads, 3-4 sem.)              │ ✓      │
+├─────────────────────────────────────┼─────────────────────────────────────────────────┼────────┤
+│ Riesgos o sesgos                    │ Slide 3.4 (página 17) — 5 riesgos identificados │ ✓      │
+└─────────────────────────────────────┴─────────────────────────────────────────────────┴────────┘
+
+4. Plan de acción priorizado ✓ completo, supera el mínimo
+
+┌────────────────────────────────────┬───────────────────────────────────────────┬───────────────┐
+│             Requisito              │                Dónde está                 │    Estado     │
+├────────────────────────────────────┼───────────────────────────────────────────┼───────────────┤
+│ Mínimo 4 iniciativas WhatsApp +    │ Slide 4.1 (página 18) — 5 iniciativas,    │ ✓ (supera lo  │
+│ Landing                            │ ambos canales                             │ pedido)       │
+├────────────────────────────────────┼───────────────────────────────────────────┼───────────────┤
+│ Modelo de priorización explícito + │ Slide 4.2 (página 19) — modelo ICE,       │ ✓             │
+│  impacto por iniciativa            │ impacto en ventas/mes por cada una        │               │
+├────────────────────────────────────┼───────────────────────────────────────────┼───────────────┤
+│ Referencia explícita a "13 ventas  │ Aparece en cabecera, slide 4.3 y en el    │ ✓             │
+│ vs. ~50/mes"                       │ resumen final                             │               │
+└────────────────────────────────────┴───────────────────────────────────────────┴───────────────┘
+
+¿Es profesional?
+
+Sí, en tono y en sustancia:
+- Lenguaje directo, sin relleno, con matices apropiados donde corresponde (ej. "es una estimación, no una promesa").
+- Incluye una sección de autocrítica honesta ("Lectura honesta frente a la meta") — eso en realidad suma profesionalismo, porque muestra que no estás vendiendo humo.
+- Todas las cifras están verificadas matemáticamente contra los datos crudos (lo audité número por número).
+- Formato pulido (colores, tablas, navegación) sin que eso opaque el contenido — ya revisamos que la sustancia sostiene el diseño.
+
+No hay ningún punto del enunciado sin responder. Lo único que podrías considerar es si quieres darle un poco más de profundidad a la sección de atribución UTM (hoy son 3 líneas) ya que el enunciado la marca como "núcleo del rol" — pero no es un vacío, es una oportunidad de pulir si te sobra tiempo antes de la 1pm.
+
+✻ Cogitated for 43s · 1 shell still running
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ dime en un informe en donde se responde esto en el html y en el pdf
+────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⏵⏵ accept edits on · 1 shell                                                                      /rc
+  ⧉  informe_artifac

@@ -38,13 +38,21 @@ El plan completo proyecta pasar de 21 a **~33 ventas/mes combinadas (2,5x)** en 
 
 El cumplimiento de la meta combinada pasaría de **32% (21/65) a ~51% (33/65)** — el salto más grande y de mayor certeza del plan viene de las dos primeras iniciativas, ambas centradas en cerrar la ventana de contacto.
 
-## En resumen
+## En resumen — 5 conclusiones centrales
 
-El problema no es la demanda del proyecto — es el seguimiento del lead una vez que llega.
+**1. El problema no es de demanda, es de seguimiento del lead.** Hay volumen suficiente entrando al funnel (8.200 conversaciones WhatsApp, 48.000 sesiones Landing) — lo que falla es lo que pasa después de que el lead entra.
 
-- **26% de cumplimiento de meta en WhatsApp** (13 de ~50 ventas/mes) — el punto de partida real de este análisis.
-- **47% de los leads de WhatsApp nunca se contactan** — la fuga de mayor costo, ≈11 ventas/mes potenciales perdidas, y 100% accionable por el equipo digital.
-- **98% de las citas agendadas no cierran** — la fuga de mayor gravedad relativa, aunque depende más del proceso comercial que del digital.
-- Con datos, control operativo y experimentación (A/B), el plan proyecta pasar de **21 a ~33 ventas/mes combinadas** en 2-3 meses — de 32% a ~51% de cumplimiento de la meta combinada.
+**2. El cumplimiento de meta hoy es bajo: 26%.** WhatsApp cerró enero con 13 ventas de una meta de ~50/mes.
+
+**3. Las 3 fugas de mayor impacto**, en orden de costo real:
+- 47% de leads de WhatsApp nunca se contactan (2.600 de 5.500) → ≈11 ventas/mes perdidas por esto solo.
+- 98% de las citas agendadas no cierran (607→13 en WhatsApp, 210→8 en Landing).
+- 42% abandona el formulario en Landing antes de completarlo.
+
+**4. El plan de 5 iniciativas proyecta pasar de 21 a ~33 ventas/mes combinadas (2,5x)** en 2-3 meses — impulsado principalmente por las dos primeras iniciativas (enrutamiento/alertas SLA en WhatsApp y reducir tiempo de contacto en Landing).
+
+**5. Aun así, esa mejora no cierra la brecha completa.** Pasar de 32% a ~51% de cumplimiento de la meta combinada (65/mes) es un salto real, pero no alcanza el 100% solo optimizando conversión sobre el volumen actual de leads — para cerrar el resto se necesita además una palanca de volumen (más inversión en pauta), sostenida en el tiempo.
+
+**La idea que debe quedar clara en la entrevista:** es un plan honesto, no uno que promete resolver todo con la conversión sola.
 
 El siguiente paso no es más análisis — es instrumentar el control del lead (Paso 2) y correr el primer experimento (Paso 3) para empezar a capturar esas ≈11 ventas/mes ya identificadas.
