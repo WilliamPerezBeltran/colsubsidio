@@ -277,8 +277,9 @@
   .ab-card p { font-size: 0.9rem; margin: 0; }
 
   /* ---------- Initiative cards ---------- */
-  .init-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0.85rem; margin: 1rem 0 1.6rem; }
-  .init-card { border: 1px solid var(--border); border-radius: 3px; padding: 1rem 1.1rem; background: var(--surface); }
+  .init-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0.85rem; margin: 1rem 0 1.6rem; align-items: stretch; }
+  .init-card { border: 1px solid var(--border); border-radius: 3px; padding: 1rem 1.1rem; background: var(--surface); display: flex; flex-direction: column; height: 100%; }
+  .init-card .filler { flex: 1 1 auto; margin-top: 0.65rem; padding-top: 0.55rem; border-top: 1px dashed var(--border); }
   .init-card .num { font-family: ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
   .init-card h4 { font-size: 1.02rem; font-weight: 600; margin: 0.2rem 0 0.7rem; line-height: 1.25; }
   .init-card .sub { font-family: ui-monospace, monospace; font-size: 0.64rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin: 0.65rem 0 0.2rem; }
@@ -286,7 +287,7 @@
   .init-card p, .init-card ul { font-size: 0.85rem; margin: 0; line-height: 1.5; }
   .init-card ul { padding-left: 1.1rem; }
   .init-card ul li { margin-bottom: 0.15rem; }
-  .init-card .note { margin-top: 0.65rem; padding-top: 0.55rem; border-top: 1px dashed var(--border); font-size: 0.8rem; color: var(--muted); }
+  .init-card .note { margin-top: 0.65rem; padding-top: 0.55rem; border-top: 1px dashed var(--border); font-size: 0.8rem; color: var(--muted); flex: 1 1 auto; }
   .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.8rem; margin: 1.4rem 0; }
   .stat-box { text-align: center; border: 1px solid var(--border); border-radius: 3px; padding: 0.9rem 0.6rem; background: var(--surface-2); }
   .stat-box .n { font-family: ui-monospace, monospace; font-size: 1.35rem; font-weight: 700; color: var(--line); }
@@ -333,7 +334,7 @@
     .panel { display: block !important; animation: none !important; opacity: 1 !important; transform: none !important; }
     .panel .sheet { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; page-break-after: always; animation: none !important; padding: 1.3rem 1.4rem 1.5rem; }
     .panel:last-of-type .sheet { page-break-after: auto; }
-    .kpi-card, .callout, .ab-card, .stat-box { break-inside: avoid; }
+    .kpi-card, .callout, .ab-card, .stat-box, .init-card { break-inside: avoid; }
     table { font-size: 0.78rem; }
     thead th, tbody td { padding: 0.4rem 0.6rem; }
     h3.block-title { margin: 1rem 0 0.5rem; padding-top: 0.8rem; }
@@ -974,6 +975,7 @@
           </ul>
           <div class="sub">Objetivo</div>
           <p>Contactar al usuario cuando aún está interesado.</p>
+          <div class="filler"></div>
         </div>
         <div class="init-card">
           <span class="num">03</span>
@@ -995,6 +997,7 @@
           <p>Nuevo experimento A/B: formulario más corto (de ~8 a 3 preguntas) + barra de progreso — menos esfuerzo para el usuario.</p>
           <div class="sub">Objetivo</div>
           <p>Que más visitantes completen el formulario y se conviertan en leads.</p>
+          <div class="filler"></div>
         </div>
         <div class="init-card">
           <span class="num">05</span>
@@ -1005,6 +1008,7 @@
           <p>Exigir causa raíz en cada gestión: perdido por precio, por ubicación, por centrales de riesgo, o porque compró con la competencia.</p>
           <div class="sub">Objetivo</div>
           <p>Mejorar la calidad de los datos.</p>
+          <div class="filler"></div>
         </div>
       </div>
     </div>
@@ -1053,6 +1057,15 @@
         <p><b>El plan completo proyecta pasar de 21 a ~33 ventas/mes combinadas (2,5x) en 2-3 meses</b> — una mejora sustancial, pero todavía lejos de la meta combinada de 65/mes (50 WhatsApp + 15 Landing). Cerrar esa brecha adicional exige, más allá de estas 5 iniciativas de conversión, sostener una palanca de <strong>volumen</strong> (más pauta, más conversaciones entrantes) en el tiempo.</p>
       </div>
       <p>El cumplimiento de la meta combinada pasaría de <strong>32% (21/65) a ~51% (33/65)</strong> — el salto más grande y de mayor certeza del plan viene de las dos primeras iniciativas, ambas centradas en cerrar la ventana de contacto.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Hoy</th><th>Con el plan</th><th>Falta para la meta</th></tr></thead>
+          <tbody>
+            <tr><td class="num">21 ventas/mes</td><td class="num">~33 ventas/mes</td><td>Meta: 65 ventas/mes</td></tr>
+            <tr><td class="num">32% de cumplimiento</td><td class="num hl">51% de cumplimiento</td><td>Se requiere aumentar el volumen de leads (más pauta y más tráfico), además de optimizar la conversión.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
