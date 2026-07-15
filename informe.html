@@ -230,6 +230,7 @@
   .callout.warn .ic { color: var(--warn); }
   .callout.good { background: var(--good-bg); border-color: var(--good); }
   .callout.good .ic { color: var(--good); }
+  .callout p.calc { margin-top: 0.6rem; padding-top: 0.55rem; border-top: 1px dashed currentColor; opacity: 0.82; font-family: ui-monospace, monospace; font-size: 0.76rem; line-height: 1.6; }
 
   /* ---------- Funnel ---------- */
   .funnel { display: flex; flex-direction: column; gap: 1.6rem; margin: 1rem 0 1.6rem; }
@@ -494,6 +495,14 @@
           </tbody>
         </table>
       </div>
+      <h3 class="block-title">Conclusiones</h3>
+      <ul class="clean">
+        <li><strong>Autogestión — 32,9%.</strong> De cada 100 personas que le escriben al bot, 33 quedan resueltas solitas, sin necesitar un asesor; las otras 67 sí necesitan que un humano las atienda.</li>
+        <li><strong>Desbordado → Contactado — 52,7%.</strong> De quienes sí pasaron a un asesor porque el bot no pudo resolverles, solo a 53 de cada 100 alguien las contacta. A las otras 47 nadie las llama ni les escribe — es la fuga de mayor volumen del canal.</li>
+        <li><strong>Contactado → Agenda — 20,9%.</strong> De las personas que sí lograron contactar, solo 21 de cada 100 terminan agendando cita comercial. Las otras 79 se contactan pero no agendan (ver motivos de no-agendamiento, Paso 01 · 5/5).</li>
+        <li><strong>Agenda → Venta — 2,1%.</strong> De quienes sí tuvieron su cita agendada, solo 2 de cada 100 terminan comprando: aunque se logre llegar a la cita, ahí se cae casi todo el volumen restante.</li>
+        <li><strong>Venta / Lead — 0,24%.</strong> El resumen de todo el camino junto: de cada 100 personas que llegaron como lead (desbordadas del bot a un asesor), menos de 1 termina comprando. Es la foto completa del canal, de principio a fin.</li>
+      </ul>
     </div>
   </section>
 
@@ -527,6 +536,15 @@
           </tbody>
         </table>
       </div>
+      <h3 class="block-title">Conclusiones</h3>
+      <ul class="clean">
+        <li><strong>Sesión → Iniciado — 6,7%.</strong> De cada 100 personas que entran a la landing, solo 7 llegan a abrir el formulario. Las otras 93 se van sin dejar ningún rastro — es la fuga de mayor volumen absoluto de todo el funnel.</li>
+        <li><strong>Iniciado → Completado — 57,8%.</strong> De quienes sí abren el formulario, 58 de cada 100 lo terminan. Los otros 42 lo abandonan a mitad de camino (ver Top 3 fugas, Paso 01 · 4/5).</li>
+        <li><strong>Lead → Contactado — 64,9%.</strong> De los formularios completados, a 65 de cada 100 alguien los contacta. A los otros 35 nadie los llama ni les escribe — más cobertura que WhatsApp, pero igual con hueco.</li>
+        <li><strong>Contactado → Agenda — 17,5%.</strong> De las personas contactadas, solo 18 de cada 100 terminan agendando cita comercial. Las otras 82 se contactan pero no agendan.</li>
+        <li><strong>Agenda → Venta — 3,8%.</strong> De quienes sí tuvieron su cita agendada, solo 4 de cada 100 terminan comprando. Mejor que WhatsApp, pero sigue siendo la etapa donde se pierde casi todo el volumen que llega agendado.</li>
+        <li><strong>Venta / Lead — 0,43%.</strong> El resumen de todo el camino junto: de cada 100 personas que completan el formulario, menos de 1 termina comprando. Casi el doble de WhatsApp, pero sigue siendo un desenlace marginal.</li>
+      </ul>
     </div>
   </section>
 
@@ -547,6 +565,13 @@
           </tbody>
         </table>
       </div>
+      <h3 class="block-title">Conclusiones</h3>
+      <ul class="clean">
+        <li><strong>Contactación — gana Landing (64,9% vs. 52,7%).</strong> La landing cubre más leads que WhatsApp, pero contactando un volumen absoluto mucho menor (1.850 vs. 5.500) — es más fácil cubrir a menos personas.</li>
+        <li><strong>Contactado → Agenda — gana WhatsApp (20,9% vs. 17,5%).</strong> El asesor de WhatsApp convierte mejor el contacto en cita, probablemente porque ya llega con el contexto de la conversación previa con el bot.</li>
+        <li><strong>Agenda → Venta — gana Landing (3,8% vs. 2,1%), ambos muy bajos.</strong> Ninguno de los dos canales cierra a un ritmo saludable en esta etapa; es la brecha más grande de todo el funnel, sin importar el canal de origen.</li>
+        <li><strong>Venta / Lead — gana Landing, casi el doble (0,43% vs. 0,24%).</strong> De punta a punta, un lead de landing tiene casi el doble de probabilidad de terminar en venta que uno de WhatsApp.</li>
+      </ul>
       <p>WhatsApp gana en calificar al contactado hacia una cita; Landing gana en cubrir y cerrar. Ninguno de los dos cierra a un ritmo saludable — la brecha real está adelante.</p>
     </div>
   </section>
@@ -559,15 +584,24 @@
       <p class="dek">Con evidencia numérica; ordenadas por lo mejor cuantificable con datos propios y lo más directamente accionable por digital — no necesariamente por el tamaño teórico de la oportunidad.</p>
       <div class="callout bad">
         <span class="ic">01</span>
-        <p><b>47% de leads de WhatsApp nunca se gestionan</b> (2.600 de 5.500). Aplicando las tasas actuales de conversión aguas abajo (20,9% agenda, 2,1% cierre), representan <strong>~11 ventas/mes potenciales perdidas</strong> — cifra calculada con las tasas propias del negocio, sin depender de un benchmark externo. Es cobertura/capacidad, no velocidad (el primer contacto, cuando ocurre, es rápido: 8h20). 100% accionable por el equipo digital, por eso encabeza la lista.</p>
+        <div>
+          <p><b>47% de leads de WhatsApp nunca se gestionan</b> (2.600 de 5.500). Aplicando las tasas actuales de conversión aguas abajo (20,9% agenda, 2,1% cierre), representan <strong>~11 ventas/mes potenciales perdidas</strong> — cifra calculada con las tasas propias del negocio, sin depender de un benchmark externo. Es cobertura/capacidad, no velocidad (el primer contacto, cuando ocurre, es rápido: 8h20). 100% accionable por el equipo digital, por eso encabeza la lista.</p>
+          <p class="calc">Desbordado → Contactado (tabla WhatsApp) → 2.900 / 5.500 = 52,7% contactados → 100% − 52,7% = 47,3% ≈ 47% sin contactar (2.600 de 5.500)<br>Simulación aguas abajo (tasas de la misma tabla) → 2.600 × Contactado→Agenda (20,9%) ≈ 543 agendas · 543 × Agenda→Venta (2,1%) ≈ 11 ventas/mes<br>Cobertura, no velocidad → cuando el contacto sí ocurre tarda 8h20 en promedio; el problema es que a casi la mitad nunca le llega.</p>
+        </div>
       </div>
       <div class="callout bad">
         <span class="ic">02</span>
-        <p><b>Agenda → Venta, 98% de las citas agendadas no cierran.</b> WhatsApp convierte solo 2,1% de sus citas (607→13) y Landing 3,8% (210→8), muy por debajo del 10-15% esperable en vivienda. Comparado contra ese benchmark, esta fuga representaría entre <strong>~60 y ~100 ventas/mes</strong> de oportunidad — probablemente la más grande de las tres en términos absolutos, pero es una estimación menos precisa por depender de un benchmark externo, no de datos propios, y además es más difícil de intervenir solo desde digital porque depende del proceso comercial.</p>
+        <div>
+          <p><b>Agenda → Venta, 98% de las citas agendadas no cierran.</b> WhatsApp convierte solo 2,1% de sus citas (607→13) y Landing 3,8% (210→8), muy por debajo del 10-15% esperable en vivienda. Comparado contra ese benchmark, esta fuga representaría entre <strong>~60 y ~100 ventas/mes</strong> de oportunidad — probablemente la más grande de las tres en términos absolutos, pero es una estimación menos precisa por depender de un benchmark externo, no de datos propios, y además es más difícil de intervenir solo desde digital porque depende del proceso comercial.</p>
+          <p class="calc">Agenda → Venta (tabla WhatsApp) → 13 / 607 = 2,1% · Agenda → Venta (tabla Landing) → 8 / 210 = 3,8%<br>Vs. benchmark 10–15% → sobre 607 + 210 = 817 citas agendadas (mismas tablas) saldrían entre ~82 y ~123 ventas; hoy salen 21 (13+8)<br>Oportunidad estimada → (82 a 123) − 21 ≈ 60 a 100 ventas/mes, sensible al benchmark usado</p>
+        </div>
       </div>
       <div class="callout bad">
         <span class="ic">03</span>
-        <p><b>Abandono de formulario en Landing: 42%</b> (1.350 de 3.200 formularios iniciados no completados). Es además la fuga de mayor volumen absoluto del funnel completo (93,3% de las 48.000 sesiones nunca llega a iniciar formulario).</p>
+        <div>
+          <p><b>Abandono de formulario en Landing: 42%</b> (1.350 de 3.200 formularios iniciados no completados). Es además la fuga de mayor volumen absoluto del funnel completo (93,3% de las 48.000 sesiones nunca llega a iniciar formulario).</p>
+          <p class="calc">Iniciado → Completado (tabla Landing) → 1.850 / 3.200 = 57,8% completa → 100% − 57,8% = 42,2% ≈ 42% abandona (1.350 de 3.200)<br>Sesión → Iniciado (misma tabla) → 3.200 / 48.000 = 6,7% inicia formulario → 100% − 6,7% = 93,3% nunca inicia</p>
+        </div>
       </div>
     </div>
   </section>

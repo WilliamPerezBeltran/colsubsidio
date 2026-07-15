@@ -1,0 +1,55 @@
+en Expediente Técnico · Vivienda Colsubsidio
+Conversión y Optimización Digital
+William Fernando Pérez Beltrán
+William Fernando Pérez Beltrán — candidato a Analista de Conversión y Optimización Digital
+Ingeniero Industrial · 10 años de experiencia en desarrollo de software · perfil comercial y de producto
+Periodo: Enero 2026
+Canales: WhatsApp · Landing
+Meta WhatsApp 2026: 600 ventas (~50/mes)
+Cumplimiento enero: 26%
+
+0
+El problema
+
+1
+Diagnóstico
+
+2
+KPIs & Control
+
+3
+Prueba A/B
+
+4
+Plan de acción
+1.1Funnel WhatsApp
+1.2Funnel Landing
+1.3Comparación
+1.4Top 3 fugas
+1.5Interpretación
+01 · Diagnóstico — 1/5
+Funnel y tasas — WhatsApp
+Cada barra representa el volumen relativo a la primera etapa del canal (8.200 conversaciones = 100%).
+
+WhatsApp
+Conversaciones
+8.200
+Leads (desbordados)
+5.500
+Contactados
+2.900
+Agendados
+607
+Ventas
+13
+Transición	Cálculo	Tasa
+Autogestión	2.700 / 8.200	32,9%
+Desbordado → Contactado	2.900 / 5.500	52,7%
+Contactado → Agenda	607 / 2.900	20,9%
+Agenda → Venta	13 / 607	2,1%
+Venta / Lead	13 / 5.500	0,24%
+← Anterior
+Paso 1 · Diagnóstico — 1 de 5 · Funnel WhatsApp
+Siguiente →
+🖨 Imprimir / Guardar PDF
+Vivienda Colsubsidio 
