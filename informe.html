@@ -218,6 +218,8 @@
   .callout .calc-table table { font-size: 0.78rem; }
   .callout .calc-table th, .callout .calc-table td { padding: 0.4rem 0.6rem; }
   .callout p.calc-note { margin-top: 0.5rem; opacity: 0.82; font-size: 0.82rem; }
+  ul.clean li .interp { margin-top: 0.35rem; font-size: 0.85rem; color: var(--muted); text-align: justify; }
+  ul.clean li .interp b { color: var(--ink); }
 
   /* ---------- Funnel ---------- */
   .funnel { display: flex; flex-direction: column; gap: 1.6rem; margin: 1rem 0 1.6rem; }
@@ -648,10 +650,22 @@
       <h2>Qué frena la conversión — y qué es accionable</h2>
       <p class="dek">Lectura cruzada de la tipificación de no-agendamiento y los datos operativos.</p>
       <ul class="clean">
-        <li><strong>39% centrales de riesgo</strong> → no accionable por digital; restricción de política de crédito aguas arriba.</li>
-        <li><strong>21% ubicación + 14% precio (35%)</strong> → desajuste oferta/expectativa. Sí accionable: mejor segmentación de pauta y calificación temprana en el bot.</li>
-        <li><strong>Calidad de dato:</strong> dentro de los motivos ya tipificados, un 19% queda como "otros/sin causa específica"; y de forma más amplia, solo el 62% del total de gestiones de agendamiento (agendadas o no) tiene algún motivo registrado en el sistema. Son dos mediciones distintas — no se suman — pero ambas apuntan al mismo problema de fondo: falta de disciplina de tipificación en el CRM, que limita qué tan confiable es cualquier diagnóstico basado en estos datos. Se cierra con disciplina de CRM.</li>
-        <li><strong>SLA de contacto:</strong> WhatsApp responde más rápido (8h20) pero cubre menos (52,7%); Landing responde más lento (26h) pero cubre más (64,9%) por menor volumen. El cuello de botella de WhatsApp es capacidad, no velocidad.</li>
+        <li>
+          <strong>39% centrales de riesgo</strong> → no accionable por digital; restricción de política de crédito aguas arriba.
+          <div class="interp"><b>Interpretación:</b> 39 de cada 100 caen por un rechazo financiero previo — fuera del alcance de digital.</div>
+        </li>
+        <li>
+          <strong>21% ubicación + 14% precio (35%)</strong> → desajuste oferta/expectativa. Sí accionable: mejor segmentación de pauta y calificación temprana en el bot.
+          <div class="interp"><b>Interpretación:</b> desajuste real entre oferta y expectativa — sí corregible con mejor pauta y calificación temprana.</div>
+        </li>
+        <li>
+          <strong>Calidad de dato:</strong> dentro de los motivos ya tipificados, un 19% queda como "otros/sin causa específica"; y de forma más amplia, solo el 62% del total de gestiones de agendamiento (agendadas o no) tiene algún motivo registrado en el sistema. Son dos mediciones distintas — no se suman — pero ambas apuntan al mismo problema de fondo: falta de disciplina de tipificación en el CRM, que limita qué tan confiable es cualquier diagnóstico basado en estos datos. Se cierra con disciplina de CRM.
+          <div class="interp"><b>Interpretación:</b> casi 4 de cada 10 gestiones no dejan rastro del motivo — se prioriza a ciegas sin ese dato.</div>
+        </li>
+        <li>
+          <strong>SLA de contacto:</strong> WhatsApp responde más rápido (8h20) pero cubre menos (52,7%); Landing responde más lento (26h) pero cubre más (64,9%) por menor volumen. El cuello de botella de WhatsApp es capacidad, no velocidad.
+          <div class="interp"><b>Interpretación:</b> no es velocidad, es capacidad — WhatsApp ya responde rápido pero no da abasto con el volumen.</div>
+        </li>
       </ul>
     </div>
   </section>
@@ -667,6 +681,21 @@
         <p><b>Tasa de conversión Lead → Venta</b>, por canal, medida mensual contra meta. Permite comparar canales en igualdad de condiciones, independiente del volumen de entrada.</p>
       </div>
       <p><strong>Meta propuesta para Landing</strong> (hoy sin meta formal): <strong>~15 ventas/mes (180/año)</strong> a 6 meses, revisable trimestralmente — un objetivo deliberadamente conservador frente al 0,43% de venta/lead actual, para no comprometer una cifra que la operación aún no ha sostenido en el tiempo.</p>
+      <div class="kv-grid">
+        <div class="kv-card"><div class="k">Ventas Landing (actual)</div><div class="v">8</div></div>
+        <div class="kv-card"><div class="k">Leads Landing (actual)</div><div class="v">1.850</div></div>
+        <div class="kv-card"><div class="k">Meta propuesta</div><div class="v">15 ventas/mes</div></div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Paso</th><th class="num">Cálculo</th><th class="num">Resultado</th></tr></thead>
+          <tbody>
+            <tr><td>Venta / Lead actual</td><td class="num">8 / 1.850</td><td class="num">0,43%</td></tr>
+            <tr><td>Venta / Lead implícita en la meta</td><td class="num">15 / 1.850</td><td class="num hl">0,81%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small">Con el mismo volumen de 1.850 leads/mes, llegar a 15 ventas implica pasar de 0,43% a 0,81% de conversión — casi el doble.</p>
     </div>
   </section>
 
@@ -883,7 +912,8 @@
     <span class="nav-count" id="navCount" aria-live="polite"></span>
     <button class="navbtn primary" id="nextBtn" type="button">Siguiente &rarr;</button>
   </div>
-  <div class="nav-row" style="margin-top:0.6rem; justify-content:center;">
+  <div class="nav-row" style="margin-top:0.6rem; justify-content:center; gap:0.6rem;">
+    <button class="navbtn" id="fullscreenBtn" type="button">⛶ Pantalla completa</button>
     <button class="navbtn" id="printBtn" type="button">🖨 Imprimir / Guardar PDF</button>
   </div>
 
@@ -926,6 +956,7 @@
     var navCount = document.getElementById("navCount");
     var progressFill = document.getElementById("progressFill");
     var printBtn = document.getElementById("printBtn");
+    var fullscreenBtn = document.getElementById("fullscreenBtn");
 
     mainLabels.forEach(function (label, i) {
       var btn = document.createElement("button");
@@ -995,6 +1026,18 @@
       if (e.key === "ArrowRight") goTo(current + 1);
       if (e.key === "ArrowLeft") goTo(current - 1);
     });
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(function () {});
+      } else {
+        document.exitFullscreen();
+      }
+    }
+    fullscreenBtn.addEventListener("click", toggleFullscreen);
+    document.addEventListener("fullscreenchange", function () {
+      fullscreenBtn.textContent = document.fullscreenElement ? "⛶ Salir de pantalla completa" : "⛶ Pantalla completa";
+    });
+
     var exitPrintBtn = document.getElementById("exitPrintBtn");
     function enterPrintMode() {
       document.body.classList.add("print-mode");
