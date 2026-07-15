@@ -230,7 +230,10 @@
   .callout.warn .ic { color: var(--warn); }
   .callout.good { background: var(--good-bg); border-color: var(--good); }
   .callout.good .ic { color: var(--good); }
-  .callout p.calc { margin-top: 0.6rem; padding-top: 0.55rem; border-top: 1px dashed currentColor; opacity: 0.82; font-family: ui-monospace, monospace; font-size: 0.76rem; line-height: 1.6; }
+  .callout .calc-table { margin: 0.6rem 0 0; }
+  .callout .calc-table table { font-size: 0.78rem; }
+  .callout .calc-table th, .callout .calc-table td { padding: 0.4rem 0.6rem; }
+  .callout p.calc-note { margin-top: 0.5rem; opacity: 0.82; font-size: 0.82rem; }
 
   /* ---------- Funnel ---------- */
   .funnel { display: flex; flex-direction: column; gap: 1.6rem; margin: 1rem 0 1.6rem; }
@@ -586,21 +589,54 @@
         <span class="ic">01</span>
         <div>
           <p><b>47% de leads de WhatsApp nunca se gestionan</b> (2.600 de 5.500). Aplicando las tasas actuales de conversión aguas abajo (20,9% agenda, 2,1% cierre), representan <strong>~11 ventas/mes potenciales perdidas</strong> — cifra calculada con las tasas propias del negocio, sin depender de un benchmark externo. Es cobertura/capacidad, no velocidad (el primer contacto, cuando ocurre, es rápido: 8h20). 100% accionable por el equipo digital, por eso encabeza la lista.</p>
-          <p class="calc">Desbordado → Contactado (tabla WhatsApp) → 2.900 / 5.500 = 52,7% contactados → 100% − 52,7% = 47,3% ≈ 47% sin contactar (2.600 de 5.500)<br>Simulación aguas abajo (tasas de la misma tabla) → 2.600 × Contactado→Agenda (20,9%) ≈ 543 agendas · 543 × Agenda→Venta (2,1%) ≈ 11 ventas/mes<br>Cobertura, no velocidad → cuando el contacto sí ocurre tarda 8h20 en promedio; el problema es que a casi la mitad nunca le llega.</p>
+          <div class="table-scroll calc-table">
+            <table>
+              <thead><tr><th>Paso</th><th class="num">Cálculo</th><th class="num">Resultado</th></tr></thead>
+              <tbody>
+                <tr><td>Desbordado → Contactado (tabla WhatsApp)</td><td class="num">2.900 / 5.500</td><td class="num">52,7%</td></tr>
+                <tr><td>Sin contactar</td><td class="num">100% − 52,7%</td><td class="num hl">47,3% ≈ 47% (2.600 de 5.500)</td></tr>
+                <tr><td>Agendas simuladas</td><td class="num">2.600 × 20,9%</td><td class="num">≈ 543</td></tr>
+                <tr><td>Ventas simuladas</td><td class="num">543 × 2,1%</td><td class="num hl">≈ 11 / mes</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="calc-note">Cobertura, no velocidad: cuando el contacto sí ocurre tarda 8h20 en promedio; el problema es que a casi la mitad nunca le llega.</p>
         </div>
       </div>
       <div class="callout bad">
         <span class="ic">02</span>
         <div>
           <p><b>Agenda → Venta, 98% de las citas agendadas no cierran.</b> WhatsApp convierte solo 2,1% de sus citas (607→13) y Landing 3,8% (210→8), muy por debajo del 10-15% esperable en vivienda. Comparado contra ese benchmark, esta fuga representaría entre <strong>~60 y ~100 ventas/mes</strong> de oportunidad — probablemente la más grande de las tres en términos absolutos, pero es una estimación menos precisa por depender de un benchmark externo, no de datos propios, y además es más difícil de intervenir solo desde digital porque depende del proceso comercial.</p>
-          <p class="calc">Agenda → Venta (tabla WhatsApp) → 13 / 607 = 2,1% · Agenda → Venta (tabla Landing) → 8 / 210 = 3,8%<br>Vs. benchmark 10–15% → sobre 607 + 210 = 817 citas agendadas (mismas tablas) saldrían entre ~82 y ~123 ventas; hoy salen 21 (13+8)<br>Oportunidad estimada → (82 a 123) − 21 ≈ 60 a 100 ventas/mes, sensible al benchmark usado</p>
+          <div class="table-scroll calc-table">
+            <table>
+              <thead><tr><th>Paso</th><th class="num">Cálculo</th><th class="num">Resultado</th></tr></thead>
+              <tbody>
+                <tr><td>Agenda → Venta (tabla WhatsApp)</td><td class="num">13 / 607</td><td class="num">2,1%</td></tr>
+                <tr><td>Agenda → Venta (tabla Landing)</td><td class="num">8 / 210</td><td class="num">3,8%</td></tr>
+                <tr><td>Ventas si aplica benchmark 10–15%</td><td class="num">(607 + 210) × 10–15%</td><td class="num">~82 a ~123</td></tr>
+                <tr><td>Ventas reales hoy</td><td class="num">13 + 8</td><td class="num">21</td></tr>
+                <tr><td>Oportunidad estimada</td><td class="num">(82 a 123) − 21</td><td class="num hl">~60 a ~100 / mes</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="calc-note">Estimación sensible al benchmark usado (10–15%), no a datos propios — por eso es la fuga peor cuantificada de las tres.</p>
         </div>
       </div>
       <div class="callout bad">
         <span class="ic">03</span>
         <div>
           <p><b>Abandono de formulario en Landing: 42%</b> (1.350 de 3.200 formularios iniciados no completados). Es además la fuga de mayor volumen absoluto del funnel completo (93,3% de las 48.000 sesiones nunca llega a iniciar formulario).</p>
-          <p class="calc">Iniciado → Completado (tabla Landing) → 1.850 / 3.200 = 57,8% completa → 100% − 57,8% = 42,2% ≈ 42% abandona (1.350 de 3.200)<br>Sesión → Iniciado (misma tabla) → 3.200 / 48.000 = 6,7% inicia formulario → 100% − 6,7% = 93,3% nunca inicia</p>
+          <div class="table-scroll calc-table">
+            <table>
+              <thead><tr><th>Paso</th><th class="num">Cálculo</th><th class="num">Resultado</th></tr></thead>
+              <tbody>
+                <tr><td>Iniciado → Completado (tabla Landing)</td><td class="num">1.850 / 3.200</td><td class="num">57,8%</td></tr>
+                <tr><td>Abandono</td><td class="num">100% − 57,8%</td><td class="num hl">42,2% ≈ 42% (1.350 de 3.200)</td></tr>
+                <tr><td>Sesión → Iniciado (misma tabla)</td><td class="num">3.200 / 48.000</td><td class="num">6,7%</td></tr>
+                <tr><td>Nunca inicia formulario</td><td class="num">100% − 6,7%</td><td class="num hl">93,3%</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
