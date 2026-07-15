@@ -170,7 +170,7 @@
     color: var(--line); font-weight: 700; margin-bottom: 0.5rem;
   }
   .sheet h2 { font-size: 1.45rem; font-weight: 600; margin-bottom: 0.35rem; }
-  .sheet .dek { color: var(--muted); font-size: 0.96rem; max-width: 68ch; line-height: 1.55; margin: 0.3rem 0 1.5rem; }
+  .sheet .dek { color: var(--muted); font-size: 0.96rem; max-width: 68ch; line-height: 1.55; margin: 0.3rem 0 1.5rem; text-align: left; }
 
   h3.block-title {
     font-family: -apple-system, "Segoe UI", sans-serif; font-size: 0.78rem; letter-spacing: 0.07em; text-transform: uppercase;
@@ -203,6 +203,9 @@
   .kv-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 3px; padding: 0.75rem 0.9rem; }
   .kv-card .k { font-family: ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
   .kv-card .v { font-family: ui-monospace, monospace; font-size: 1.15rem; font-weight: 700; margin-top: 0.15rem; }
+  .kv-card .lead { font-size: 0.88rem; font-weight: 400; margin-top: 0.15rem; }
+  .kv-card ul { margin: 0.35rem 0 0; padding-left: 1.1rem; font-size: 0.85rem; font-weight: 400; line-height: 1.5; }
+  .kv-card ul li { margin-bottom: 0.15rem; }
 
   /* ---------- Callouts ---------- */
   .callout { border-radius: 3px; padding: 0.95rem 1.1rem; margin: 1.1rem 0; border: 1px solid; display: flex; gap: 0.7rem; }
@@ -257,6 +260,9 @@
   .flow .pill.win { border-color: var(--good); color: var(--good); background: var(--good-bg); }
   .flow .pill.lose { border-color: var(--bad); color: var(--bad); background: var(--bad-bg); }
   .flow .arrow { color: var(--muted); font-size: 0.9rem; }
+  .flow.compact { flex-wrap: nowrap; overflow-x: auto; gap: 0.25rem; justify-content: center; }
+  .flow.compact .pill { font-size: 0.62rem; padding: 0.26rem 0.5rem; }
+  .flow.compact .arrow { font-size: 0.68rem; }
 
   /* ---------- A/B spec cards ---------- */
   .ab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0 1.6rem; }
@@ -750,7 +756,7 @@
         </table>
       </div>
       <h3 class="block-title">Estados del lead (una sola máquina de estados, ambos canales)</h3>
-      <div class="flow">
+      <div class="flow compact">
         <span class="pill">Nuevo</span><span class="arrow">→</span>
         <span class="pill">En gestión</span><span class="arrow">→</span>
         <span class="pill">Contactado</span><span class="arrow">→</span>
@@ -760,6 +766,24 @@
         <span class="pill win">Ganado</span><span class="arrow">/</span><span class="pill lose">Perdido</span>
       </div>
       <p class="small">Cada cambio de estado queda con timestamp y responsable — es la base de las alertas y de todos los KPIs de tiempo.</p>
+      <h3 class="block-title">Cadencia de revisión</h3>
+      <div class="kv-grid">
+        <div class="kv-card">
+          <div class="k">Diario</div>
+          <div class="lead">Indicadores que requieren acción inmediata:</div>
+          <ul><li>SLA de primer contacto</li><li>Leads sin gestionar</li></ul>
+        </div>
+        <div class="kv-card">
+          <div class="k">Semanal</div>
+          <div class="lead">Indicadores para monitorear el desempeño del embudo:</div>
+          <ul><li>Contactación</li><li>Agendamiento</li><li>Asistencia</li><li>Tipificación</li></ul>
+        </div>
+        <div class="kv-card">
+          <div class="k">Mensual</div>
+          <div class="lead">Indicadores de resultado del negocio:</div>
+          <ul><li>Venta/Lead</li><li>Tasa de cierre</li><li>CPL</li><li>CPA</li></ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -774,6 +798,58 @@
         <li><strong>Alerta de cita:</strong> sin confirmar 24h antes; sin tipificación 48h después de realizada.</li>
         <li><strong>Atribución UTM:</strong> source/medium/campaign capturado en el punto de entrada (formulario o click-to-chat) y persistido en el lead hasta la venta — first-touch para comparar canales, último touch pre-agenda para medio-funnel.</li>
         <li><strong>Tablero:</strong> vista ejecutiva mensual (ventas vs. meta), vista de funnel semanal, vista operativa diaria (SLA, cola, alertas), vista de calidad de dato semanal.</li>
+      </ul>
+      <h3 class="block-title">Las 4 vistas del tablero</h3>
+      <div class="kv-grid">
+        <div class="kv-card">
+          <div class="k">Vista ejecutiva · directivos</div>
+          <div class="lead">Solo quieren saber:</div>
+          <ul><li>Ventas</li><li>Meta</li><li>Conversión</li></ul>
+        </div>
+        <div class="kv-card">
+          <div class="k">Vista del funnel · marketing</div>
+          <div class="lead">Quieren saber:</div>
+          <ul><li>Dónde se cae la gente</li><li>Qué etapa empeoró</li></ul>
+        </div>
+        <div class="kv-card">
+          <div class="k">Vista operativa · supervisores</div>
+          <div class="lead">Necesitan ver:</div>
+          <ul><li>Cola de leads</li><li>SLA</li><li>Alertas</li><li>Quién tiene retrasos</li></ul>
+        </div>
+        <div class="kv-card">
+          <div class="k">Vista calidad de datos · CRM</div>
+          <div class="lead">Para asegurar que el CRM esté bien diligenciado, por ejemplo:</div>
+          <ul><li>Leads sin tipificar</li><li>Datos incompletos</li><li>Errores de registro</li></ul>
+        </div>
+      </div>
+      <h3 class="block-title">Propuesta técnica: cómo se construiría</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Necesidad del negocio</th><th>Solución técnica que podrías desarrollar</th></tr></thead>
+          <tbody>
+            <tr><td>Alertas SLA</td><td>Worker en background (Sidekiq, Celery) que revisa los leads cada pocos minutos y genera alertas.</td></tr>
+            <tr><td>Escalamiento</td><td>Motor de reglas (Rule Engine) que reasigna el responsable del lead y dispara notificaciones.</td></tr>
+            <tr><td>Notificaciones</td><td>Integración con WhatsApp Business API o Slack.</td></tr>
+            <tr><td>Dashboard</td><td>API REST + frontend en React, con gráficos en Chart.js.</td></tr>
+            <tr><td>Seguimiento del funnel</td><td>Eventos almacenados en PostgreSQL para reconstruir el recorrido del lead.</td></tr>
+            <tr><td>Atribución UTM</td><td>Middleware que captura las UTM y las persiste desde el primer contacto.</td></tr>
+            <tr><td>Calidad de datos</td><td>Jobs automáticos que detectan registros incompletos o duplicados.</td></tr>
+            <tr><td>KPIs</td><td>Vistas materializadas o pipelines ETL que calculan métricas diariamente.</td></tr>
+            <tr><td>Automatización</td><td>Webhooks que sincronizan el CRM con Meta Ads y Google Ads.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="block-title">¿Y con Inteligencia Artificial / Machine Learning?</h3>
+      <p class="dek">Sí, hay varias aplicaciones útiles sobre esta misma base de datos.</p>
+      <ul class="clean">
+        <li><strong>Lead Scoring (ML):</strong> predecir qué leads tienen mayor probabilidad de convertirse en venta.</li>
+        <li><strong>Predicción de abandono (ML):</strong> detectar qué leads probablemente no serán contactados a tiempo o se perderán.</li>
+        <li><strong>Next Best Action (IA):</strong> recomendar la siguiente acción óptima (llamar, enviar WhatsApp, agendar cita).</li>
+        <li><strong>Lead Routing inteligente (IA):</strong> asignar cada lead al asesor con mayor probabilidad de cerrar la venta.</li>
+        <li><strong>Chatbot con IA:</strong> responder preguntas frecuentes y calificar leads antes de que intervenga un asesor.</li>
+        <li><strong>Análisis de conversaciones (LLMs):</strong> resumir llamadas, extraer objeciones y clasificar el motivo de pérdida.</li>
+        <li><strong>Pronóstico de ventas (ML):</strong> estimar cuántas ventas se lograrán según el comportamiento actual del embudo.</li>
+        <li><strong>Detección de anomalías (ML):</strong> identificar caídas inusuales en la conversión o incumplimientos de SLA automáticamente.</li>
       </ul>
     </div>
   </section>
