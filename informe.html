@@ -200,6 +200,8 @@
 
   /* ---------- kv cards ---------- */
   .kv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.7rem; margin: 0.9rem 0 1.6rem; }
+  .kv-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 520px) { .kv-grid.cols-2 { grid-template-columns: 1fr; } }
   .kv-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 3px; padding: 0.75rem 0.9rem; }
   .kv-card .k { font-family: ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
   .kv-card .v { font-family: ui-monospace, monospace; font-size: 1.15rem; font-weight: 700; margin-top: 0.15rem; }
@@ -273,10 +275,23 @@
   .ab-card .tag { font-family: ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; display: block; }
   .ab-card.variant .tag { color: var(--accent); }
   .ab-card p { font-size: 0.9rem; margin: 0; }
+
+  /* ---------- Initiative cards ---------- */
+  .init-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0.85rem; margin: 1rem 0 1.6rem; }
+  .init-card { border: 1px solid var(--border); border-radius: 3px; padding: 1rem 1.1rem; background: var(--surface); }
+  .init-card .num { font-family: ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+  .init-card h4 { font-size: 1.02rem; font-weight: 600; margin: 0.2rem 0 0.7rem; line-height: 1.25; }
+  .init-card .sub { font-family: ui-monospace, monospace; font-size: 0.64rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin: 0.65rem 0 0.2rem; }
+  .init-card .sub:first-of-type { margin-top: 0; }
+  .init-card p, .init-card ul { font-size: 0.85rem; margin: 0; line-height: 1.5; }
+  .init-card ul { padding-left: 1.1rem; }
+  .init-card ul li { margin-bottom: 0.15rem; }
+  .init-card .note { margin-top: 0.65rem; padding-top: 0.55rem; border-top: 1px dashed var(--border); font-size: 0.8rem; color: var(--muted); }
   .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.8rem; margin: 1.4rem 0; }
   .stat-box { text-align: center; border: 1px solid var(--border); border-radius: 3px; padding: 0.9rem 0.6rem; background: var(--surface-2); }
   .stat-box .n { font-family: ui-monospace, monospace; font-size: 1.35rem; font-weight: 700; color: var(--line); }
   .stat-box .l { font-size: 0.72rem; color: var(--muted); margin-top: 0.25rem; }
+  .stat-box .desc { font-size: 0.7rem; color: var(--muted); margin-top: 0.45rem; line-height: 1.4; }
 
   /* ---------- ICE table + impact bars ---------- */
   .ice-rank { display: flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--line); color: var(--surface); font-family: ui-monospace, monospace; font-size: 0.78rem; font-weight: 700; }
@@ -839,18 +854,17 @@
           </tbody>
         </table>
       </div>
-      <h3 class="block-title">¿Y con Inteligencia Artificial / Machine Learning?</h3>
-      <p class="dek">Sí, hay varias aplicaciones útiles sobre esta misma base de datos.</p>
-      <ul class="clean">
-        <li><strong>Lead Scoring (ML):</strong> predecir qué leads tienen mayor probabilidad de convertirse en venta.</li>
-        <li><strong>Predicción de abandono (ML):</strong> detectar qué leads probablemente no serán contactados a tiempo o se perderán.</li>
-        <li><strong>Next Best Action (IA):</strong> recomendar la siguiente acción óptima (llamar, enviar WhatsApp, agendar cita).</li>
-        <li><strong>Lead Routing inteligente (IA):</strong> asignar cada lead al asesor con mayor probabilidad de cerrar la venta.</li>
-        <li><strong>Chatbot con IA:</strong> responder preguntas frecuentes y calificar leads antes de que intervenga un asesor.</li>
-        <li><strong>Análisis de conversaciones (LLMs):</strong> resumir llamadas, extraer objeciones y clasificar el motivo de pérdida.</li>
-        <li><strong>Pronóstico de ventas (ML):</strong> estimar cuántas ventas se lograrán según el comportamiento actual del embudo.</li>
-        <li><strong>Detección de anomalías (ML):</strong> identificar caídas inusuales en la conversión o incumplimientos de SLA automáticamente.</li>
-      </ul>
+      <h3 class="block-title">Propuesta con IA y Machine Learning</h3>
+      <div class="kv-grid cols-2">
+        <div class="kv-card"><div class="k">Lead Scoring · ML</div><div class="lead">Predecir qué leads tienen mayor probabilidad de convertirse en venta.</div></div>
+        <div class="kv-card"><div class="k">Predicción de abandono · ML</div><div class="lead">Detectar qué leads probablemente no serán contactados a tiempo o se perderán.</div></div>
+        <div class="kv-card"><div class="k">Next Best Action · IA</div><div class="lead">Recomendar la siguiente acción óptima (llamar, enviar WhatsApp, agendar cita).</div></div>
+        <div class="kv-card"><div class="k">Lead Routing inteligente · IA</div><div class="lead">Asignar cada lead al asesor con mayor probabilidad de cerrar la venta.</div></div>
+        <div class="kv-card"><div class="k">Chatbot con IA</div><div class="lead">Responder preguntas frecuentes y calificar leads antes de que intervenga un asesor.</div></div>
+        <div class="kv-card"><div class="k">Análisis de conversaciones · LLMs</div><div class="lead">Resumir llamadas, extraer objeciones y clasificar el motivo de pérdida.</div></div>
+        <div class="kv-card"><div class="k">Pronóstico de ventas · ML</div><div class="lead">Estimar cuántas ventas se lograrán según el comportamiento actual del embudo.</div></div>
+        <div class="kv-card"><div class="k">Detección de anomalías · ML</div><div class="lead">Identificar caídas inusuales en la conversión o incumplimientos de SLA automáticamente.</div></div>
+      </div>
     </div>
   </section>
 
@@ -886,13 +900,28 @@
       <span class="sheet-kicker">03 · Experimento — 3/4</span>
       <h2>Métrica, muestra y criterio de decisión</h2>
       <div class="stat-row">
-        <div class="stat-box"><div class="n">11,0%</div><div class="l">Línea base agendamiento</div></div>
-        <div class="stat-box"><div class="n">≥14,0%</div><div class="l">Meta de agendamiento (B)</div></div>
-        <div class="stat-box"><div class="n">~1.900</div><div class="l">Leads por grupo</div></div>
-        <div class="stat-box"><div class="n">3–4 sem.</div><div class="l">Duración estimada</div></div>
+        <div class="stat-box"><div class="n">11,0%</div><div class="l">Línea base agendamiento</div><div class="desc">Resultado actual: hoy ~11% de los leads recibidos terminan agendando cita. Es el punto de partida.</div></div>
+        <div class="stat-box"><div class="n">≥14,0%</div><div class="l">Meta de agendamiento (B)</div><div class="desc">Lo que debe alcanzar el Grupo B — mejorar 3 puntos porcentuales sobre la línea base.</div></div>
+        <div class="stat-box"><div class="n">~1.900</div><div class="l">Leads por grupo</div><div class="desc">Grupo A ~1.900 · Grupo B ~1.900, para que la comparación sea confiable.</div></div>
+        <div class="stat-box"><div class="n">3–4 sem.</div><div class="l">Duración estimada</div><div class="desc">Tiempo estimado para reunir los leads necesarios y observar los resultados.</div></div>
       </div>
-      <p><strong>Métrica primaria:</strong> tasa de agendamiento sobre leads recibidos. <strong>Guardrails:</strong> % sin gestionar a 48h, tasa de asistencia, tasa de cierre.</p>
-      <p><strong>Decisión:</strong> B gana con +3pp o más sobre el 11,0% base, significancia del 95% (test de dos proporciones, una cola), sin caer la asistencia a cita más de 5pp frente al control.</p>
+      <div class="kv-grid">
+        <div class="kv-card">
+          <div class="k">Métrica primaria</div>
+          <div class="lead">Indicador principal para evaluar el experimento:</div>
+          <ul><li>Tasa de agendamiento sobre leads recibidos</li></ul>
+        </div>
+        <div class="kv-card">
+          <div class="k">Guardrails</div>
+          <div class="lead">Métricas de seguridad — no deben empeorar:</div>
+          <ul><li>% de leads sin gestionar (48h)</li><li>Tasa de asistencia a la cita</li><li>Tasa de cierre (ventas)</li></ul>
+        </div>
+        <div class="kv-card">
+          <div class="k">Criterio de decisión</div>
+          <div class="lead">Cuándo declarar ganador al Grupo B:</div>
+          <ul><li>Mejora de al menos 3pp (de 11% a 14% o más)</li><li>95% de significancia estadística</li><li>Asistencia a cita no cae más de 5pp vs. Grupo A</li></ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -917,13 +946,67 @@
       <span class="sheet-kicker">04 · Plan de acción — 1/4</span>
       <h2>Iniciativas propuestas</h2>
       <p class="dek">Cinco iniciativas, priorizadas por impacto proyectado en ventas — no todas requieren el mismo esfuerzo ni tienen el mismo nivel de certeza.</p>
-      <ul class="clean">
-        <li><strong>1. WhatsApp — enrutamiento y alertas de SLA</strong> (el bot prioriza y escala automáticamente los leads desbordados sin contacto en 2h/4h; incluye el auto-seguimiento diseñado como A/B en el Paso 03). Ataca el 47% de leads sin gestionar — la fuga de mayor costo (~11 ventas/mes).</li>
-        <li><strong>2. Landing — reducir tiempo de contacto</strong> (de 26h a &lt;4h mediante alertas y redistribución de carga entre asesores). Cierra la ventana de respuesta lenta identificada en el diagnóstico.</li>
-        <li><strong>3. Ambos canales — prefiltro de calificación en bot/formulario</strong> (filtrar por riesgo, zona y precio antes de invertir esfuerzo comercial). Reduce el desgaste sobre el ~74% de "no agendamiento" que no calificará de todas formas.</li>
-        <li><strong>4. Landing — optimización de formulario</strong> (candidato a próximo A/B: acortar de ~8 a 3 campos + barra de progreso). Ataca el 42% de abandono de formulario.</li>
-        <li><strong>5. Ambos canales — tipificación completa en CRM</strong> (exigir causa raíz en cada gestión de no-agendamiento). Habilitador de datos, no genera ventas directas, pero cierra el hueco del 38% sin tipificar que hoy sesga cualquier decisión.</li>
-      </ul>
+      <div class="init-grid">
+        <div class="init-card">
+          <span class="num">01</span>
+          <h4>WhatsApp — Enrutamiento y alertas de SLA</h4>
+          <div class="sub">Problema</div>
+          <p>El 47% de los leads desbordados nunca son contactados.</p>
+          <div class="sub">Propone</div>
+          <ul>
+            <li>A las 2h sin contacto, el bot envía un mensaje automático (el experimento A/B del Paso 03).</li>
+            <li>A las 4h sin atención, el sistema alerta al supervisor o reasigna el lead a otro asesor.</li>
+          </ul>
+          <div class="sub">Objetivo</div>
+          <p>Que menos leads queden olvidados.</p>
+          <div class="note"><strong>Por qué es la prioridad #1:</strong> es la fuga más grande — recuperar esos leads podría representar ≈11 ventas/mes adicionales.</div>
+        </div>
+        <div class="init-card">
+          <span class="num">02</span>
+          <h4>Landing — Reducir tiempo de contacto</h4>
+          <div class="sub">Problema</div>
+          <p>Los leads de la landing tardan 26 horas en recibir el primer contacto.</p>
+          <div class="sub">Propone</div>
+          <ul>
+            <li>Alertas cuando un lead lleva mucho tiempo esperando.</li>
+            <li>Redistribuir los leads entre asesores para que nadie se sobrecargue.</li>
+            <li>Meta: contactar en menos de 4 horas.</li>
+          </ul>
+          <div class="sub">Objetivo</div>
+          <p>Contactar al usuario cuando aún está interesado.</p>
+        </div>
+        <div class="init-card">
+          <span class="num">03</span>
+          <h4>Ambos canales — Prefiltro de calificación</h4>
+          <div class="sub">Problema</div>
+          <p>Muchos leads nunca van a comprar: problemas de crédito, el proyecto no está en su zona, o el precio está fuera de presupuesto.</p>
+          <div class="sub">Propone</div>
+          <p>Antes de pasar el lead al asesor, preguntar: ¿en qué ciudad buscas vivienda?, ¿cuál es tu presupuesto?, ¿tienes aprobación de crédito?</p>
+          <div class="sub">Objetivo</div>
+          <p>Que el asesor dedique tiempo solo a leads con posibilidades reales.</p>
+          <div class="note">Reduce el desgaste sobre el ~74% de los no-agendamientos (39% riesgo + 21% ubicación + 14% precio).</div>
+        </div>
+        <div class="init-card">
+          <span class="num">04</span>
+          <h4>Landing — Optimización del formulario</h4>
+          <div class="sub">Problema</div>
+          <p>El 42% abandona el formulario antes de terminarlo.</p>
+          <div class="sub">Propone</div>
+          <p>Nuevo experimento A/B: formulario más corto (de ~8 a 3 preguntas) + barra de progreso — menos esfuerzo para el usuario.</p>
+          <div class="sub">Objetivo</div>
+          <p>Que más visitantes completen el formulario y se conviertan en leads.</p>
+        </div>
+        <div class="init-card">
+          <span class="num">05</span>
+          <h4>Ambos canales — Tipificación completa en CRM</h4>
+          <div class="sub">Problema</div>
+          <p>Muchas gestiones no tienen registrado el motivo por el que el cliente no compró (solo queda "Lead perdido", sin causa).</p>
+          <div class="sub">Propone</div>
+          <p>Exigir causa raíz en cada gestión: perdido por precio, por ubicación, por centrales de riesgo, o porque compró con la competencia.</p>
+          <div class="sub">Objetivo</div>
+          <p>Mejorar la calidad de los datos.</p>
+        </div>
+      </div>
     </div>
   </section>
 
