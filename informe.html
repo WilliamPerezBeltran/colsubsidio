@@ -235,15 +235,17 @@
   /* ---------- KPI grid ---------- */
   .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.85rem; margin: 1rem 0 1.6rem; }
   .kpi-card { border: 1px solid var(--border); border-radius: 3px; padding: 0.9rem 1rem; background: var(--surface); }
+  .kpi-card .stage { font-family: ui-monospace, monospace; font-size: 0.64rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.35rem; }
   .kpi-card .name { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.5rem; line-height: 1.3; }
-  .kpi-card .rowvals { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
-  .kpi-card .now { font-family: ui-monospace, monospace; font-size: 1.4rem; font-weight: 700; }
+  .kpi-card .rowvals { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
+  .kpi-card .now { font-family: ui-monospace, monospace; font-size: 1.4rem; font-weight: 700; white-space: nowrap; }
   .kpi-card .target { font-family: ui-monospace, monospace; font-size: 0.78rem; color: var(--muted); }
   .kpi-card .target b { color: var(--line); }
   .kpi-card .bar { height: 5px; border-radius: 3px; background: var(--surface-2); margin-top: 0.55rem; overflow: hidden; }
   .kpi-card .bar i { display: block; height: 100%; background: var(--line); }
   .kpi-card.crit .now { color: var(--bad); }
   .kpi-card.crit .bar i { background: var(--bad); }
+  .kpi-card .desc { font-size: 0.76rem; color: var(--muted); margin-top: 0.55rem; line-height: 1.4; }
 
   /* ---------- Lead state flow ---------- */
   .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 1rem 0 1.5rem; }
@@ -706,14 +708,14 @@
       <h2>KPIs por etapa — hoy vs. meta</h2>
       <p class="dek">Los indicadores que alimentan el KPI norte, con metas recalibradas a un nivel exigente pero alcanzable.</p>
       <div class="kpi-grid">
-        <div class="kpi-card crit"><div class="name">% leads sin gestionar (WhatsApp)</div><div class="rowvals"><span class="now">47%</span><span class="target">meta <b>&lt;15%</b></span></div><div class="bar"><i style="width:32%"></i></div></div>
-        <div class="kpi-card"><div class="name">Tasa de autogestión (bot)</div><div class="rowvals"><span class="now">32,9%</span><span class="target">meta <b>≥35%</b></span></div><div class="bar"><i style="width:94%"></i></div></div>
-        <div class="kpi-card"><div class="name">SLA primer contacto</div><div class="rowvals"><span class="now">8h20 · 26h</span><span class="target">meta <b>&lt;4h</b></span></div></div>
-        <div class="kpi-card"><div class="name">Tasa de contactación</div><div class="rowvals"><span class="now">52,7% · 64,9%</span><span class="target">meta <b>≥80%</b></span></div><div class="bar"><i style="width:73%"></i></div></div>
-        <div class="kpi-card"><div class="name">Contactado→Agenda</div><div class="rowvals"><span class="now">20,9% · 17,5%</span><span class="target">meta <b>≥20-22%</b></span></div><div class="bar"><i style="width:91%"></i></div></div>
-        <div class="kpi-card"><div class="name">Tasa de asistencia a cita <em>(nuevo)</em></div><div class="rowvals"><span class="now">no medido hoy</span><span class="target">meta <b>≥70%</b></span></div></div>
-        <div class="kpi-card crit"><div class="name">Tasa de cierre (Agenda→Venta)</div><div class="rowvals"><span class="now">2,1% · 3,8%</span><span class="target">meta <b>≥5%</b></span></div><div class="bar"><i style="width:59%"></i></div></div>
-        <div class="kpi-card"><div class="name">Tipificación completa</div><div class="rowvals"><span class="now">62%</span><span class="target">meta <b>≥90%</b></span></div><div class="bar"><i style="width:69%"></i></div></div>
+        <div class="kpi-card crit"><div class="stage">Desbordado → Contactado</div><div class="name">% leads sin gestionar (WhatsApp)</div><div class="rowvals"><span class="now">47%</span><span class="target">meta <b>&lt;15%</b></span></div><div class="bar"><i style="width:32%"></i></div><div class="desc">Mide cuántos leads nunca fueron atendidos. Problema: si nadie los contacta, jamás comprarán.</div></div>
+        <div class="kpi-card"><div class="stage">Conversación → Autogestión</div><div class="name">Tasa de autogestión (bot)</div><div class="rowvals"><span class="now">32,9%</span><span class="target">meta <b>≥35%</b></span></div><div class="bar"><i style="width:94%"></i></div><div class="desc">Mide cuánto resuelve el bot solo. A más autogestión, menos carga para los asesores humanos.</div></div>
+        <div class="kpi-card"><div class="stage">Desbordado → Contactado</div><div class="name">SLA primer contacto</div><div class="rowvals"><span class="now">8h20 · 26h</span><span class="target">meta <b>&lt;4h</b></span></div><div class="desc">Mide qué tan rápido se contacta a un lead. Un contacto tardío pierde interés.</div></div>
+        <div class="kpi-card"><div class="stage">Desbordado/Lead → Contactado</div><div class="name">Tasa de contactación</div><div class="rowvals"><span class="now">52,7% · 64,9%</span><span class="target">meta <b>≥80%</b></span></div><div class="bar"><i style="width:73%"></i></div><div class="desc">Mide a cuántos leads sí se les habla. Sin contacto no hay agenda ni venta posible.</div></div>
+        <div class="kpi-card"><div class="stage">Contactado → Agenda</div><div class="name">Tasa de agendamiento</div><div class="rowvals"><span class="now">20,9% · 17,5%</span><span class="target">meta <b>≥20-22%</b></span></div><div class="bar"><i style="width:91%"></i></div><div class="desc">Mide cuántos contactados agendan cita. Refleja qué tan bien califica el asesor.</div></div>
+        <div class="kpi-card"><div class="stage">Agenda → Asistencia</div><div class="name">Tasa de asistencia a cita <em>(nuevo)</em></div><div class="rowvals"><span class="now">no medido hoy</span><span class="target">meta <b>≥70%</b></span></div><div class="desc">Mide cuántas citas agendadas sí se cumplen. Hoy es un punto ciego del funnel.</div></div>
+        <div class="kpi-card crit"><div class="stage">Agenda → Venta</div><div class="name">Tasa de cierre (Agenda→Venta)</div><div class="rowvals"><span class="now">2,1% · 3,8%</span><span class="target">meta <b>≥5%</b></span></div><div class="bar"><i style="width:59%"></i></div><div class="desc">Mide cuántas citas terminan en venta. Es el mayor cuello de botella del funnel.</div></div>
+        <div class="kpi-card"><div class="stage">Transversal · CRM</div><div class="name">Tipificación completa</div><div class="rowvals"><span class="now">62%</span><span class="target">meta <b>≥90%</b></span></div><div class="bar"><i style="width:69%"></i></div><div class="desc">Mide cuántas gestiones registran motivo. Sin esto no se puede diagnosticar bien el resto.</div></div>
       </div>
       <p class="small">Valores separados por "·" muestran WhatsApp y Landing respectivamente; la meta es única para ambos canales.</p>
     </div>
