@@ -105,22 +105,6 @@
   }
   .masthead .meta-row b { color: var(--ink); font-weight: 600; }
 
-  .presenter-row {
-    display: flex; align-items: center; gap: 0.85rem; margin-top: 0.3rem;
-  }
-  .presenter-row img {
-    width: 3.4rem; height: 3.4rem; border-radius: 50%; object-fit: cover;
-    border: 2px solid var(--line); flex: 0 0 auto;
-  }
-  .presenter-row .who b { font-size: 1rem; color: var(--ink); }
-  .presenter-row .who .role { font-size: 0.9rem; color: var(--line); font-weight: 600; }
-  .presenter-row .who .cred {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.74rem;
-    color: var(--muted); margin-top: 0.15rem;
-  }
-  @media print { .presenter-row { display: none !important; } }
-  body.print-mode .presenter-row { display: none !important; }
-
   /* ---------- Progress bar ---------- */
   .progress-track { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
   .progress-track .rail { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
@@ -194,11 +178,11 @@
   }
   .sheet > h3.block-title:first-of-type { border-top: none; padding-top: 0; margin-top: 0.4rem; }
 
-  p { line-height: 1.62; margin: 0 0 0.9rem; color: var(--ink); }
+  p { line-height: 1.62; margin: 0 0 0.9rem; color: var(--ink); text-align: justify; }
   p.small { font-size: 0.9rem; color: var(--muted); }
   strong { font-weight: 700; }
   ul.clean { margin: 0 0 0.9rem; padding-left: 1.2rem; line-height: 1.6; }
-  ul.clean li { margin-bottom: 0.45rem; }
+  ul.clean li { margin-bottom: 0.45rem; text-align: justify; }
 
   /* ---------- Tables ---------- */
   .table-scroll { overflow-x: auto; margin: 0.9rem 0 1.4rem; border: 1px solid var(--border); border-radius: 3px; }
@@ -357,13 +341,6 @@
   <div class="masthead">
     <span class="eyebrow">Expediente Técnico · Vivienda Colsubsidio</span>
     <h1>Conversión y Optimización Digital</h1>
-    <div class="presenter-row">
-      <img src="william.jpeg" alt="William Fernando Pérez Beltrán" />
-      <div class="who">
-        <div><b>William Fernando Pérez Beltrán</b> — <span class="role">candidato a Analista de Conversión y Optimización Digital</span></div>
-        <div class="cred">Ingeniero Industrial · 10 años de experiencia en desarrollo de software · perfil comercial y de producto</div>
-      </div>
-    </div>
     <div class="meta-row">
       <span>Periodo: <b>Enero 2026</b></span>
       <span>Canales: <b>WhatsApp · Landing</b></span>
@@ -588,6 +565,11 @@
       <div class="callout bad">
         <span class="ic">01</span>
         <div>
+          <div class="kv-grid">
+            <div class="kv-card"><div class="k">Leads (desbordados)</div><div class="v">5.500</div></div>
+            <div class="kv-card"><div class="k">Contactados</div><div class="v">2.900</div></div>
+            <div class="kv-card"><div class="k">Sin contactar</div><div class="v">5.500 − 2.900 = 2.600</div></div>
+          </div>
           <p><b>47% de leads de WhatsApp nunca se gestionan</b> (2.600 de 5.500). Aplicando las tasas actuales de conversión aguas abajo (20,9% agenda, 2,1% cierre), representan <strong>~11 ventas/mes potenciales perdidas</strong> — cifra calculada con las tasas propias del negocio, sin depender de un benchmark externo. Es cobertura/capacidad, no velocidad (el primer contacto, cuando ocurre, es rápido: 8h20). 100% accionable por el equipo digital, por eso encabeza la lista.</p>
           <div class="table-scroll calc-table">
             <table>
@@ -601,11 +583,18 @@
             </table>
           </div>
           <p class="calc-note">Cobertura, no velocidad: cuando el contacto sí ocurre tarda 8h20 en promedio; el problema es que a casi la mitad nunca le llega.</p>
+          <p class="calc-note">Si contactáramos a todos los leads desbordados, podríamos generar cerca de 11 ventas adicionales al mes.</p>
         </div>
       </div>
       <div class="callout bad">
         <span class="ic">02</span>
         <div>
+          <div class="kv-grid">
+            <div class="kv-card"><div class="k">Citas agendadas · WhatsApp</div><div class="v">607</div></div>
+            <div class="kv-card"><div class="k">Ventas · WhatsApp</div><div class="v">13</div></div>
+            <div class="kv-card"><div class="k">Citas agendadas · Landing</div><div class="v">210</div></div>
+            <div class="kv-card"><div class="k">Ventas · Landing</div><div class="v">8</div></div>
+          </div>
           <p><b>Agenda → Venta, 98% de las citas agendadas no cierran.</b> WhatsApp convierte solo 2,1% de sus citas (607→13) y Landing 3,8% (210→8), muy por debajo del 10-15% esperable en vivienda. Comparado contra ese benchmark, esta fuga representaría entre <strong>~60 y ~100 ventas/mes</strong> de oportunidad — probablemente la más grande de las tres en términos absolutos, pero es una estimación menos precisa por depender de un benchmark externo, no de datos propios, y además es más difícil de intervenir solo desde digital porque depende del proceso comercial.</p>
           <div class="table-scroll calc-table">
             <table>
@@ -619,12 +608,18 @@
               </tbody>
             </table>
           </div>
-          <p class="calc-note">Estimación sensible al benchmark usado (10–15%), no a datos propios — por eso es la fuga peor cuantificada de las tres.</p>
+          <p class="calc-note"><strong>Esta fuga es diferente de la anterior. La anterior se basaba 100% en datos del negocio. Esta mezcla los datos del negocio con un benchmark (una referencia del sector). Por eso es una estimación menos precisa.</strong></p>
+          <p class="calc-note">Si alcanzamos el benchmark del sector, podríamos generar entre 60 y 100 ventas adicionales al mes.</p>
         </div>
       </div>
       <div class="callout bad">
         <span class="ic">03</span>
         <div>
+          <div class="kv-grid">
+            <div class="kv-card"><div class="k">Formularios iniciados</div><div class="v">3.200</div></div>
+            <div class="kv-card"><div class="k">Formularios completados</div><div class="v">1.850</div></div>
+            <div class="kv-card"><div class="k">Abandonaron</div><div class="v">3.200 − 1.850 = 1.350</div></div>
+          </div>
           <p><b>Abandono de formulario en Landing: 42%</b> (1.350 de 3.200 formularios iniciados no completados). Es además la fuga de mayor volumen absoluto del funnel completo (93,3% de las 48.000 sesiones nunca llega a iniciar formulario).</p>
           <div class="table-scroll calc-table">
             <table>
@@ -634,9 +629,13 @@
                 <tr><td>Abandono</td><td class="num">100% − 57,8%</td><td class="num hl">42,2% ≈ 42% (1.350 de 3.200)</td></tr>
                 <tr><td>Sesión → Iniciado (misma tabla)</td><td class="num">3.200 / 48.000</td><td class="num">6,7%</td></tr>
                 <tr><td>Nunca inicia formulario</td><td class="num">100% − 6,7%</td><td class="num hl">93,3%</td></tr>
+                <tr><td>Contactados simulados</td><td class="num">1.350 × 64,9%</td><td class="num">≈ 876</td></tr>
+                <tr><td>Agendas simuladas</td><td class="num">876 × 17,5%</td><td class="num">≈ 153</td></tr>
+                <tr><td>Ventas simuladas</td><td class="num">153 × 3,8%</td><td class="num hl">≈ 6 / mes</td></tr>
               </tbody>
             </table>
           </div>
+          <p class="calc-note">Si eliminamos el abandono de formulario, podríamos generar cerca de 6 ventas adicionales al mes.</p>
         </div>
       </div>
     </div>

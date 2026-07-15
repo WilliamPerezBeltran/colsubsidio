@@ -1,10 +1,29 @@
 {
   "permissions": {
+    "defaultMode": "acceptEdits",
     "deny": [
       "Bash(git push:*)",
       "Bash(git push)"
     ],
     "allow": [
+      "Skill(artifact-design)",
+
+      "Edit(//home/walle/Desktop/2026/prueba colsubsidio/**)",
+      "Write(//home/walle/Desktop/2026/prueba colsubsidio/**)",
+
+      "Read(//tmp/**)",
+      "Read(//home/**)",
+
+      "Bash(python3 *)",
+      "Bash(find / -maxdepth 6 -iname \"*Presentacion_Assessment*\")",
+
+      "Bash(google-chrome --headless --disable-gpu --no-sandbox --print-to-pdf=\"informe.pdf\" --print-to-pdf-no-header --no-pdf-header-footer --virtual-time-budget=5000 \"file://$\\(pwd\\)/informe.html\")",
+      "Bash(pdftoppm -png -f 5 -l 5 -r 100 informe.pdf /tmp/page5check)",
+      "Bash(pdftoppm -png -f 12 -l 13 -r 80 informe.pdf /tmp/check_formulas)",
+      "Bash(pdftoppm -png -f 11 -l 12 -r 80 informe.pdf /tmp/check_fix)",
+      "Bash(pdftoppm -png -r 60 informe.pdf /tmp/allpages)",
+      "Bash(pdfinfo informe.pdf)",
+
       "Bash(git add *)",
       "Bash(git rm *)",
       "Bash(git fetch *)",
